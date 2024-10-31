@@ -1879,4 +1879,32 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .timeline-text { max-width: 700px; }
 
+
+  /**
+   * REF
+   */
+   a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:visited {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: hsl(45, 100%, 71%) 0%, ;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  
+  a:active {
+    color: hsl(45, 100%, 71%) 0%, ;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+
 }
