@@ -1328,173 +1328,61 @@
       -->
 
       <article class="blog" data-page="blog">
-
         <header>
           <h2 class="h2 article-title">Blog</h2>
         </header>
-
+      
         <section class="blog-posts">
-
-          <ul class="blog-posts-list">
-
-            <li class="blog-post-item">
-              <a href="https://medium.com/zero-to/batch-normalization-in-neural-networks-82fa411ed5a4">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/1.png" alt="Batch Normalization in Neural Networks" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">AI & ML</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2024-06-03">Jun 3, 2024</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Batch Normalization in Neural Networks #15</h3>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a
-                href="https://medium.com/zero-to/embeddings-a-general-overview-of-neural-network-representations-ed1e722c57fb">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/2.png"
-                    alt="Embeddings: A General Overview of Neural Network Representations" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">AI & ML</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2024-05-16">May 16, 2024</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Embeddings: A General Overview of Neural Network Representations #14
-                  </h3>
-
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="https://medium.com/zero-to/access-elastic-cluster-over-vpn-651edced272b">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/3.png" alt="Access Elastic Cluster Over VPN" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Cloud</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2023-07-21">Jul 21, 2023</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Access Elastic Cluster Over VPN #13</h3>
-
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="https://medium.com/zero-to/avoid-hbase-region-server-hot-spotting-85e835258825">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/4.png" alt="Avoid HBase Region Server Hot-spotting" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Database</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2023-02-10">Feb 10, 2023</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Avoid HBase Region Server Hot-spotting #12</h3>
-
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="https://medium.com/zero-to/word-embedding-understanding-the-fundamentals-746748000700">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/5.png" alt="Vectors: Understanding the Fundamentals" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">AI & ML</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 01, 2023</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Vectors: Understanding the Fundamentals #11</h3>
-
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a
-                href="https://medium.com/zero-to/tips-and-tricks-for-generating-high-quality-text-with-chatgpt-3-for-content-creation-baa116f5d365">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/6.png" alt="Tips and Tricks for Generating High-Quality Text"
-                    loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">AI & ML</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2023-01-21">Jan 22, 2023</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Tips and Tricks for Generating High-Quality Text #10</h3>
-
-                </div>
-
-              </a>
-            </li>
-
+          <ul class="blog-posts-list" id="blog-posts-list">
+            <!-- Blog posts will be dynamically inserted here -->
           </ul>
-
         </section>
-
       </article>
+      
+      <script>
+        async function fetchMediumArticles() {
+          const username = "tiroshanm"; // Medium username
+          const rssFeedUrl = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${username}`;
+      
+          try {
+            const response = await fetch(rssFeedUrl);
+            const data = await response.json();
+            
+            if (data.status === "ok") {
+              const blogList = document.getElementById("blog-posts-list");
+              blogList.innerHTML = ""; // Clear existing content
+      
+              data.items.slice(0, 6).forEach(article => { // Load latest 5 articles
+                const listItem = document.createElement("li");
+                listItem.classList.add("blog-post-item");
+                
+                listItem.innerHTML = `
+                  <a href="${article.link}" target="_blank">
+                    <figure class="blog-banner-box">
+                      <img src="${article.thumbnail}" alt="${article.title}" loading="lazy">
+                    </figure>
+                    <div class="blog-content">
+                      <div class="blog-meta">
+                        <p class="blog-category">${article.categories[0] || "General"}</p>
+                        <span class="dot"></span>
+                        <time datetime="${new Date(article.pubDate).toISOString().split('T')[0]}">
+                          ${new Date(article.pubDate).toDateString()}
+                        </time>
+                      </div>
+                      <h3 class="h3 blog-item-title">${article.title}</h3>
+                    </div>
+                  </a>
+                `;
+                blogList.appendChild(listItem);
+              });
+            }
+          } catch (error) {
+            console.error("Failed to load Medium articles:", error);
+          }
+        }
+      
+        fetchMediumArticles();
+      </script>
 
 
 
