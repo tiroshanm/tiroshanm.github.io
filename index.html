@@ -1355,11 +1355,20 @@
               data.items.slice(0, 6).forEach(article => { // Load latest 5 articles
                 const listItem = document.createElement("li");
                 listItem.classList.add("blog-post-item");
+      
+                // Extract first image from article content if thumbnail is missing
+                let imageSrc = article.thumbnail;
+                if (!imageSrc) {
+                  const tempDiv = document.createElement("div");
+                  tempDiv.innerHTML = article.content;
+                  const imgTag = tempDiv.querySelector("img");
+                  imageSrc = imgTag ? imgTag.src : "default-image.jpg"; // Fallback image
+                }
                 
                 listItem.innerHTML = `
                   <a href="${article.link}" target="_blank">
                     <figure class="blog-banner-box">
-                      <img src="${article.thumbnail}" alt="${article.title}" loading="lazy">
+                      <img src="${imageSrc}" alt="${article.title}" loading="lazy">
                     </figure>
                     <div class="blog-content">
                       <div class="blog-meta">
@@ -1383,6 +1392,7 @@
       
         fetchMediumArticles();
       </script>
+      
 
 
 
