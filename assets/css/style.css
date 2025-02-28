@@ -1026,8 +1026,117 @@ main {
   font-weight: var(--fw-300);
 }
 
+.blog-spaces {
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Align items vertically in the center */
+  gap: 20px; 
+  flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+  margin-bottom: 20px; /* Optional, adds spacing between sections */
+}
 
+.blog-space {
+  width: 48%;
+  text-align: center;
+  padding: 10px;
+  border: none; /* Removed the border */
+  border-radius: 8px;
+  color: white; /* Set text color to white */
+}
 
+.blog-logo {
+  max-width: 100px;
+  height: auto;
+  display: block; /* Ensure logo is block-level for centering */
+  margin-left: auto;
+  margin-right: auto; /* Center the logo horizontally */
+}
+
+.blog-space h3 {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  color: white; /* Set title text color to white */
+}
+
+.blog-space p {
+  font-size: 1rem;
+  margin-top: 10px;
+  color: white; /* Set description text color to white */
+}
+
+/* Styles for the latest articles section */
+.latest-articles-title {
+  font-size: 1.75rem;
+  margin-top: 30px;
+  text-align: center;
+  color: white; /* Set title text color to white */
+}
+
+/* Styles for the blog post list */
+.blog-post-item {
+  display: flex;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.blog-banner-box {
+  width: 200px;
+  height: 120px;
+  overflow: hidden;
+}
+
+.blog-banner-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-content {
+  padding: 10px;
+  flex-grow: 1;
+}
+
+.blog-meta {
+  font-size: 0.9rem;
+  color: white; /* Set meta text color to white */
+}
+
+.dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #888;
+  margin: 0 5px;
+}
+
+.blog-item-title {
+  font-size: 1.25rem;
+  margin-top: 10px;
+  color: white; /* Set article title text color to white */
+}
+
+/* Initially hide the additional items */
+.timeline-list li:nth-child(n+6) {
+  display: none;
+}
+
+/* Button styling */
+.show-more-btn {
+  background-color: #f1f1f1;
+  color: #333;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.show-more-btn:hover {
+  background-color: #ddd;
+}
 
 
 /*-----------------------------------*\
