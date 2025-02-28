@@ -1327,76 +1327,97 @@
         - #BLOG
       -->
 
-      <article class="blog" data-page="blog">
-        <header>
-          <h2 class="h2 article-title">Blog</h2>
-        </header>
+<article class="blog" data-page="blog">
+  <header>
+    <h2 class="h2 article-title">Blog</h2>
+    <!-- Add the two blog spaces with logos and links -->
+    <div class="blog-spaces">
+      <!-- NeuralNotes Blog Space -->
+      <div class="blog-space">
+        <a href="https://neuralnotes.medium.com" target="_blank">
+          <img src="./assets/images/neuralnotes.png" alt="NeuralNotes Logo" class="blog-logo">
+          <h3>NeuralNotes</h3>
+        </a>
+        <p>A space to explore the latest in AI, Machine Learning, and Knowledge Graphs.</p>
+      </div>
+
+      <!-- Zero-to Blog Space -->
+      <div class="blog-space">
+        <a href="https://zero-to.medium.com" target="_blank">
+          <img src="./assets/images/zeroto.png" alt="Zero-to Logo" class="blog-logo">
+          <h3>Zero-to</h3>
+        </a>
+        <p>A journey from beginner to expert in tech, software engineering, and data science.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Latest Articles Title -->
+  <section class="latest-articles">
+    <h3 class="latest-articles-title">Latest Articles</h3>
+  </section>
+  
+  <section class="blog-posts">
+    <ul class="blog-posts-list" id="blog-posts-list">
+      <!-- Blog posts will be dynamically inserted here -->
+    </ul>
+  </section>
+</article>
+
+<script>
+  async function fetchMediumArticles() {
+    const username = "tiroshanm"; // Medium username
+    const rssFeedUrl = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${username}`;
+  
+    try {
+      const response = await fetch(rssFeedUrl);
+      const data = await response.json();
       
-        <section class="blog-posts">
-          <ul class="blog-posts-list" id="blog-posts-list">
-            <!-- Blog posts will be dynamically inserted here -->
-          </ul>
-        </section>
-      </article>
-      
-      <script>
-        async function fetchMediumArticles() {
-          const username = "tiroshanm"; // Medium username
-          const rssFeedUrl = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${username}`;
-      
-          try {
-            const response = await fetch(rssFeedUrl);
-            const data = await response.json();
-            
-            if (data.status === "ok") {
-              const blogList = document.getElementById("blog-posts-list");
-              blogList.innerHTML = ""; // Clear existing content
-      
-              data.items.slice(0, 6).forEach(article => { // Load latest 5 articles
-                const listItem = document.createElement("li");
-                listItem.classList.add("blog-post-item");
-      
-                // Extract first image from article content if thumbnail is missing
-                let imageSrc = article.thumbnail;
-                if (!imageSrc) {
-                  const tempDiv = document.createElement("div");
-                  tempDiv.innerHTML = article.content;
-                  const imgTag = tempDiv.querySelector("img");
-                  imageSrc = imgTag ? imgTag.src : "default-image.jpg"; // Fallback image
-                }
-                
-                listItem.innerHTML = `
-                  <a href="${article.link}" target="_blank">
-                    <figure class="blog-banner-box">
-                      <img src="${imageSrc}" alt="${article.title}" loading="lazy">
-                    </figure>
-                    <div class="blog-content">
-                      <div class="blog-meta">
-                        <p class="blog-category">${article.categories[0] || "General"}</p>
-                        <span class="dot"></span>
-                        <time datetime="${new Date(article.pubDate).toISOString().split('T')[0]}">
-                          ${new Date(article.pubDate).toDateString()}
-                        </time>
-                      </div>
-                      <h3 class="h3 blog-item-title">${article.title}</h3>
-                    </div>
-                  </a>
-                `;
-                blogList.appendChild(listItem);
-              });
-            }
-          } catch (error) {
-            console.error("Failed to load Medium articles:", error);
+      if (data.status === "ok") {
+        const blogList = document.getElementById("blog-posts-list");
+        blogList.innerHTML = ""; // Clear existing content
+
+        // Load latest 6 articles
+        data.items.slice(0, 6).forEach(article => {
+          const listItem = document.createElement("li");
+          listItem.classList.add("blog-post-item");
+
+          // Extract first image from article content if thumbnail is missing
+          let imageSrc = article.thumbnail;
+          if (!imageSrc) {
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = article.content;
+            const imgTag = tempDiv.querySelector("img");
+            imageSrc = imgTag ? imgTag.src : "default-image.jpg"; // Fallback image
           }
-        }
-      
-        fetchMediumArticles();
-      </script>
-      
+          
+          listItem.innerHTML = `
+            <a href="${article.link}" target="_blank">
+              <figure class="blog-banner-box">
+                <img src="${imageSrc}" alt="${article.title}" loading="lazy">
+              </figure>
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <p class="blog-category">${article.categories[0] || "General"}</p>
+                  <span class="dot"></span>
+                  <time datetime="${new Date(article.pubDate).toISOString().split('T')[0]}">
+                    ${new Date(article.pubDate).toDateString()}
+                  </time>
+                </div>
+                <h4 class="h3 blog-item-title">${article.title}</h3>
+              </div>
+            </a>
+          `;
+          blogList.appendChild(listItem);
+        });
+      }
+    } catch (error) {
+      console.error("Failed to load Medium articles:", error);
+    }
+  }
 
-
-
-
+  fetchMediumArticles();
+</script>
 
       <!--
         - #CONTACT
