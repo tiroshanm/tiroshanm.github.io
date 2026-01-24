@@ -1,521 +1,1243 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <title>Tiroshan Madushanka</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Tiroshan Madushanka | Research Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white: #ffffff;
+            --off-white: #f8f8f8;
+            --cream: #f5f5f5;
+            --light-gray: #e8e8e6;
+            --medium-gray: #999999;
+            --dark-gray: #4a4a4a;
+            --charcoal: #2a2a2a;
+            --black: #1a1a1a;
+            --accent: #8b7355;
+            --accent-light: #c4b5a0;
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'Source Sans 3', -apple-system, sans-serif;
+        }
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+        html {
+            scroll-behavior: smooth;
+        }
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.min.css" rel="stylesheet">
+        body {
+            font-family: var(--font-sans);
+            background: #f8f8f8;
+            color: var(--charcoal);
+            line-height: 1.7;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        ::selection {
+            background: var(--accent-light);
+            color: var(--black);
+        }
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(248, 248, 248, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid transparent;
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            border-bottom: 1px solid var(--light-gray);
+            padding: 1rem 4rem;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            color: var(--black);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--black);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links .lab-link {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .nav-links .lab-link:hover {
+            color: var(--black);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 4rem 4rem;
+            position: relative;
+            background: linear-gradient(135deg, #f8f8f8 0%, #f5f5f5 50%, #f2f2f2 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
+            opacity: 0.15;
+            filter: blur(80px);
+        }
+
+        .hero-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 480px;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeUp 1s ease-out;
+        }
+
+        .hero-image {
+            animation: fadeUp 1s ease-out 0.2s both;
+        }
+
+        .profile-photo-container {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.02);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--black);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--dark-gray);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .credential-tag {
+            padding: 0.5rem 1rem;
+            background: #fafafa;
+            border: 1px solid var(--light-gray);
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            color: var(--dark-gray);
+            transition: all 0.3s ease;
+        }
+
+        .credential-tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--accent);
+        }
+
+        .social-link svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 4rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 300;
+            color: var(--black);
+            letter-spacing: -0.01em;
+        }
+
+        /* About Section */
+        .about {
+            background: #f2f2f2;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+        }
+
+        .about-text p:first-of-type::first-letter {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            float: left;
+            line-height: 1;
+            padding-right: 0.5rem;
+            color: var(--accent);
+            font-weight: 400;
+        }
+
+        .research-interests {
+            background: #f8f8f8;
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent);
+        }
+
+        .research-interests h3 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--black);
+            font-weight: 400;
+        }
+
+        .interest-list {
+            list-style: none;
+        }
+
+        .interest-list li {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--light-gray);
+            font-size: 0.85rem;
+            color: var(--dark-gray);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .interest-list li:last-child {
+            border-bottom: none;
+        }
+
+        .interest-list li::before {
+            content: '→';
+            color: var(--accent);
+            font-size: 0.75rem;
+        }
+
+        /* Publications Section - COMPACT */
+        .publications {
+            background: #f8f8f8;
+            padding: 3rem 4rem;
+        }
+
+        .pub-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .pub-category-btn {
+            background: none;
+            border: none;
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--medium-gray);
+            cursor: pointer;
+            padding: 0.3rem 0.6rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .pub-category-btn.active,
+        .pub-category-btn:hover {
+            color: var(--black);
+        }
+
+        .pub-category-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .publications-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pub-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .pub-item:hover {
+            padding-left: 0.6rem;
+            background: #f2f2f2;
+            margin: 0 -0.6rem;
+            padding-right: 0.6rem;
+        }
+
+        .pub-year {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .pub-type {
+            font-size: 0.6rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--medium-gray);
+            margin-top: 0.1rem;
+        }
+
+        .pub-content h4 {
+            font-family: var(--font-serif);
+            font-size: 0.98rem;
+            font-weight: 400;
+            color: var(--black);
+            margin-bottom: 0.2rem;
+            line-height: 1.3;
+        }
+
+        .pub-content h4 a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .pub-content h4 a:hover {
+            color: var(--accent);
+        }
+
+        .pub-authors {
+            font-size: 0.78rem;
+            color: var(--dark-gray);
+            margin-bottom: 0.1rem;
+        }
+
+        .pub-venue {
+            font-size: 0.72rem;
+            color: var(--medium-gray);
+            font-style: italic;
+        }
+
+        /* Education Section - COMPACT */
+        .education {
+            background: #f5f5f5;
+            padding: 3rem 4rem;
+        }
+
+        .education-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--accent-light);
+        }
+
+        .edu-item {
+            padding-left: 1.5rem;
+            padding-bottom: 1.2rem;
+            position: relative;
+        }
+
+        .edu-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .edu-item::before {
+            content: '';
+            position: absolute;
+            left: -3px;
+            top: 2px;
+            width: 7px;
+            height: 7px;
+            background: #f5f5f5;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+        }
+
+        .edu-year {
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.2rem;
+        }
+
+        .edu-degree {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            color: var(--black);
+            margin-bottom: 0.15rem;
+            font-weight: 400;
+        }
+
+        .edu-institution {
+            font-size: 0.82rem;
+            color: var(--dark-gray);
+        }
+
+        .edu-details {
+            font-size: 0.72rem;
+            color: var(--medium-gray);
+            margin-top: 0.2rem;
+        }
+
+        /* Experience Section - COMPACT */
+        .experience {
+            background: #f8f8f8;
+            padding: 3rem 4rem;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .exp-card {
+            padding: 1rem 1.2rem;
+            background: #f2f2f2;
+            border-left: 2px solid transparent;
+            transition: all 0.4s ease;
+        }
+
+        .exp-card:hover {
+            border-left-color: var(--accent);
+            transform: translateX(3px);
+        }
+
+        .exp-period {
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .exp-role {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: var(--black);
+            margin-bottom: 0.15rem;
+            font-weight: 400;
+        }
+
+        .exp-org {
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+        }
+
+        .exp-location {
+            font-size: 0.7rem;
+            color: var(--medium-gray);
+            margin-top: 0.15rem;
+        }
+
+        /* Service Section - COMPACT */
+        .service {
+            background: #f2f2f2;
+            padding: 3rem 4rem;
+        }
+
+        .service-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            padding: 0.8rem 1.2rem;
+            background: #fafafa;
+            text-align: center;
+            transition: all 0.3s ease;
+            min-width: 130px;
+        }
+
+        .service-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        }
+
+        .service-year {
+            font-size: 0.6rem;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            margin-bottom: 0.2rem;
+        }
+
+        .service-conf {
+            font-size: 0.85rem;
+            color: var(--black);
+            font-weight: 500;
+        }
+
+        .service-role {
+            font-size: 0.68rem;
+            color: var(--medium-gray);
+            margin-top: 0.15rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 4rem;
+        }
+
+        .contact .section-label {
+            color: var(--accent-light);
+        }
+
+        .contact .section-title {
+            color: var(--white);
+        }
+
+        .contact-emails {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1.2rem 0;
+        }
+
+        .contact-email {
+            font-family: var(--font-serif);
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            color: var(--white);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .contact-email:hover {
+            color: var(--accent-light);
+        }
+
+        .email-divider {
+            color: var(--medium-gray);
+            font-size: 1.2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: var(--medium-gray);
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            padding: 1.2rem 4rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.7rem;
+            color: var(--medium-gray);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--black);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            section {
+                padding: 3rem 3rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-wrapper {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-image {
+                order: -1;
+                justify-self: center;
+            }
+
+            .profile-photo-container {
+                max-width: 380px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 7rem 2rem 3rem;
+            }
+
+            section {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .pub-item {
+                grid-template-columns: 1fr;
+                gap: 0.2rem;
+            }
+
+            .pub-year {
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+            }
+
+            .pub-type {
+                margin-top: 0;
+            }
+
+            .credentials {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .social-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--accent);
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+    </style>
 </head>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="51">
-    <!-- Navbar Start -->
-    <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
-        <a href="index.html" class="navbar-brand ml-lg-3">
-            <h1 class="m-0 display-5"><span class="text-primary">Tiroshan</span>Madushanka</h1>
-        </a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
+    <nav id="navbar">
+        <div class="logo">T<span>.</span>Madushanka</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#service">Service</a></li>
+            <li><a href="cognet-lab.html" class="lab-link">CogNet Lab</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
-        <div class="collapse navbar-collapse px-lg-3" id="navbarCollapse">
-            <div class="navbar-nav m-auto py-0">
-                <a href="#home" class="nav-item nav-link active">Home</a>
-                <a href="#about" class="nav-item nav-link">About</a>
-                <a href="#qualification" class="nav-item nav-link">Quality</a>
-                <!-- <a href="#skill" class="nav-item nav-link">Skill</a> -->
-                <!-- <a href="#service" class="nav-item nav-link">Service</a> -->
-                <a href="#portfolio" class="nav-item nav-link">Publications</a>
-                <a href="#achievements" class="nav-item nav-link">Achievements</a>
-                <a href="#blog" class="nav-item nav-link">Blog</a>
-                <a href="img/TIroshan_Madhushanka_Dark_Resume.pdf" class="nav-item nav-link">Hire Me</a>
-            </div>
-            <!-- <a href="" class="btn btn-outline-primary d-none d-lg-block">Hire Me</a> -->
-        </div>
     </nav>
-    <!-- Navbar End -->
 
-
-    <!-- Video Modal Start -->
-    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <!-- 16:9 aspect ratio -->
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always"
-                            allow="autoplay"></iframe>
-                    </div>
+    <section class="hero">
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <p class="hero-subtitle">Research Portfolio</p>
+                <h1>Tiroshan<br>Madushanka, <em>Ph.D.</em></h1>
+                <p class="hero-description">
+                    A researcher and educator passionate about Artificial Intelligence, Knowledge Graphs, and Semantic Web technologies. 
+                    Currently exploring the frontiers of machine learning and knowledge representation.
+                </p>
+                <div class="credentials">
+                    <span class="credential-tag">Lecturer • University of Kelaniya</span>
+                    <span class="credential-tag">Research Assistant • NII Japan</span>
+                    <span class="credential-tag">Ph.D. • SOKENDAI</span>
+                </div>
+                <div class="social-links">
+                    <a href="https://scholar.google.com/citations?user=-f65TiAAAAAJ&hl=en" class="social-link" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+                        Google Scholar
+                    </a>
+                    <a href="https://github.com/tiroshanm" class="social-link" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/tiroshanm/" class="social-link" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://orcid.org/0000-0001-6627-1477" class="social-link" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378a.815.815 0 1 1 0 1.63.815.815 0 0 1 0-1.63zm-.67 3.071h1.34v10.18h-1.34V7.449zm3.845 0h3.634c3.58 0 5.182 2.39 5.182 5.088 0 2.857-1.754 5.092-5.143 5.092h-3.673V7.449zm1.34 1.165v7.86h2.183c2.73 0 3.904-1.62 3.904-3.93 0-2.12-1.148-3.93-3.904-3.93h-2.183z"/></svg>
+                        ORCID
+                    </a>
+                    <a href="https://www.researchgate.net/profile/Tiroshan-Madushanka" class="social-link" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 9 9 0 0 0-.046.62c-.01.23-.015.471-.015.724v1.094H14.586v1.873H16.05v7.477h2.454V7.523h1.758l.323-1.873h-2.081V4.817c0-.261.014-.483.043-.665.03-.18.077-.327.144-.44.066-.114.157-.201.27-.26.114-.06.261-.09.44-.09.127 0 .262.02.405.058.142.04.252.077.329.112l.5-1.746a4.016 4.016 0 0 0-.66-.186A3.853 3.853 0 0 0 19.586 0zm-7.037.95c-.808 0-1.54.14-2.197.418a5.118 5.118 0 0 0-1.701 1.164 5.19 5.19 0 0 0-1.094 1.761A5.848 5.848 0 0 0 7.17 6.29c0 .839.114 1.608.34 2.308.228.7.571 1.3 1.03 1.801.46.502 1.03.896 1.713 1.183.683.287 1.477.43 2.383.43.614 0 1.163-.046 1.647-.137a8.51 8.51 0 0 0 1.215-.332v-1.888a6.85 6.85 0 0 1-1.133.332c-.405.087-.85.13-1.334.13-.579 0-1.087-.09-1.526-.268a3.1 3.1 0 0 1-1.13-.77 3.317 3.317 0 0 1-.696-1.195 4.626 4.626 0 0 1-.241-1.535c0-.543.082-1.043.247-1.5.165-.458.406-.857.723-1.195a3.37 3.37 0 0 1 1.123-.793c.44-.19.938-.285 1.496-.285.405 0 .79.04 1.153.12.363.082.695.186.995.313v-1.94a7.264 7.264 0 0 0-1.17-.325A7.406 7.406 0 0 0 12.549.95z"/></svg>
+                        ResearchGate
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-photo-container">
+                    <img src="profile-photo.png" alt="Dr. Tiroshan Madushanka" class="profile-photo">
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Video Modal End -->
+    </section>
 
+    <section class="about" id="about">
+        <div class="section-header fade-in">
+            <p class="section-label">About</p>
+            <h2 class="section-title">Research & Vision</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text fade-in">
+                <p>My research journey centers on advancing the intersection of artificial intelligence and knowledge representation. I am particularly fascinated by how machines can better understand, reason with, and generate knowledge through sophisticated graph structures and semantic understanding.</p>
+                <p>At the National Institute of Informatics in Japan, I work on developing novel approaches for knowledge graph embeddings, focusing on negative sampling strategies that improve representation learning. My doctoral research introduced innovative methods like MDNCaching and TuckerDNCaching.</p>
+                <p>As a lecturer at the University of Kelaniya, I am committed to nurturing the next generation of computer scientists, sharing my passion for programming, software engineering, and cloud technologies.</p>
+            </div>
+            <div class="research-interests fade-in">
+                <h3>Research Interests</h3>
+                <ul class="interest-list">
+                    <li>Semantic Web & Knowledge Engineering</li>
+                    <li>Knowledge Graph Representation Learning</li>
+                    <li>Artificial Intelligence & Machine Learning</li>
+                    <li>Blockchain & Decentralized Systems</li>
+                    <li>Agentic AI & Autonomous Systems</li>
+                    <li>Software Architecture & Scalable Systems</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-    <!-- Header Start -->
-    <div class="container-fluid bg-primary d-flex align-items-center mb-5 py-5" id="home" style="min-height: 100vh;">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 px-5 pl-lg-0 pb-5 pb-lg-0">
-                    <img class="img-fluid w-100 rounded-circle shadow-sm" src="img/profile.png" alt="">
+    <section class="publications" id="publications">
+        <div class="section-header fade-in">
+            <p class="section-label">Research Output</p>
+            <h2 class="section-title">Selected Publications</h2>
+        </div>
+        <div class="pub-categories fade-in">
+            <button class="pub-category-btn active" data-filter="all">All</button>
+            <button class="pub-category-btn" data-filter="journal">Journals</button>
+            <button class="pub-category-btn" data-filter="conference">Conferences</button>
+            <button class="pub-category-btn" data-filter="preprint">Preprints</button>
+        </div>
+        <div class="publications-list">
+            <div class="pub-item fade-in" data-type="conference">
+                <div>
+                    <div class="pub-year">2024</div>
+                    <div class="pub-type">Conference</div>
                 </div>
-                <div class="col-lg-7 text-center text-lg-left">
-                    <h3 class="text-white font-weight-normal mb-3">I'm</h3>
-                    <h1 class="display-3 text-uppercase text-primary mb-2" style="-webkit-text-stroke: 2px #ffffff;">
-                        Tiroshan Madushanka</h1>
-                    <h1 class="typed-text-output d-inline font-weight-lighter text-white"></h1>
-                    <div class="typed-text d-none">Software Engineer, Data Science Researcher, Lecturer </div>
-                    <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
-                        <!-- <a href="" class="btn btn-outline-light mr-5">Download CV</a>
-                        <button type="button" class="btn-play" data-toggle="modal"
-                            data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
-                            <span></span>
-                        </button>
-                        <h5 class="font-weight-normal text-white m-0 ml-4 d-none d-sm-block">Play Video</h5> -->
-                    </div>
+                <div class="pub-content">
+                    <h4><a href="#">Text-KG Distill: Textual Knowledge Distillation for Enhanced KG Embeddings</a></h4>
+                    <p class="pub-authors"><strong>Madushanka, T.</strong>, & Ichise, R.</p>
+                    <p class="pub-venue">Int'l Conference on AI x Data & Knowledge Engineering (AIxDKE)</p>
+                </div>
+            </div>
+            <div class="pub-item fade-in" data-type="journal">
+                <div>
+                    <div class="pub-year">2024</div>
+                    <div class="pub-type">Journal</div>
+                </div>
+                <div class="pub-content">
+                    <h4><a href="https://dx.doi.org/10.2139/ssrn.4877272" target="_blank">Blockchain for Vehicle Registration, Transferring and Management in Sri Lanka</a></h4>
+                    <p class="pub-authors">Malintha, C., Diyasena, D., & <strong>Madushanka, T.</strong></p>
+                    <p class="pub-venue">Engineering and Technology Quarterly Reviews, 7(1), 56-65</p>
+                </div>
+            </div>
+            <div class="pub-item fade-in" data-type="preprint">
+                <div>
+                    <div class="pub-year">2024</div>
+                    <div class="pub-type">Preprint</div>
+                </div>
+                <div class="pub-content">
+                    <h4><a href="https://arxiv.org/abs/2402.19195" target="_blank">Negative Sampling in Knowledge Graph Representation Learning: A Review</a></h4>
+                    <p class="pub-authors"><strong>Madushanka, T.</strong>, & Ichise, R.</p>
+                    <p class="pub-venue">arXiv:2402.19195</p>
+                </div>
+            </div>
+            <div class="pub-item fade-in" data-type="preprint">
+                <div>
+                    <div class="pub-year">2024</div>
+                    <div class="pub-type">Preprint</div>
+                </div>
+                <div class="pub-content">
+                    <h4><a href="https://arxiv.org/abs/2403.06094" target="_blank">SecureRights: A Blockchain-Powered Trusted DRM Framework</a></h4>
+                    <p class="pub-authors"><strong>Madushanka, T.</strong>, Kumara, D.S., & Rathnaweera, A.A.</p>
+                    <p class="pub-venue">arXiv:2403.06094</p>
+                </div>
+            </div>
+            <div class="pub-item fade-in" data-type="journal">
+                <div>
+                    <div class="pub-year">2023</div>
+                    <div class="pub-type">Journal</div>
+                </div>
+                <div class="pub-content">
+                    <h4><a href="https://doi.org/10.1007/s10844-023-00796-y" target="_blank">TuckerDNCaching: High-quality Negative Sampling with Tucker Decomposition</a></h4>
+                    <p class="pub-authors"><strong>Madushanka, T.</strong>, & Ichise, R.</p>
+                    <p class="pub-venue">Journal of Intelligent Information Systems, 61, 739-763</p>
+                </div>
+            </div>
+            <div class="pub-item fade-in" data-type="conference">
+                <div>
+                    <div class="pub-year">2022</div>
+                    <div class="pub-type">Conference</div>
+                </div>
+                <div class="pub-content">
+                    <h4><a href="https://doi.org/10.1007/978-3-031-08530-7_74" target="_blank">MDNCaching: A Strategy to Generate Quality Negatives for KG Embedding</a></h4>
+                    <p class="pub-authors"><strong>Madushanka, T.</strong>, & Ichise, R.</p>
+                    <p class="pub-venue">Int'l Conference on Industrial, Engineering and Other Applications of Applied Intelligent Systems</p>
+                </div>
+            </div>
+            <div class="pub-item fade-in" data-type="conference">
+                <div>
+                    <div class="pub-year">2021</div>
+                    <div class="pub-type">Conference</div>
+                </div>
+                <div class="pub-content">
+                    <h4><a href="https://ceur-ws.org/Vol-3125/paper9.pdf" target="_blank">A Novel Anomaly Detection Approach to Secure APIs from Cyberattacks</a></h4>
+                    <p class="pub-authors">Ifthikar, A., et al., <strong>Madushanka, T.</strong>, & Hettiarachchi, S.</p>
+                    <p class="pub-venue">SGAI Int'l Conference on AI and Cybersecurity</p>
+                </div>
+            </div>
+            <div class="pub-item fade-in" data-type="conference">
+                <div>
+                    <div class="pub-year">2020</div>
+                    <div class="pub-type">Conference</div>
+                </div>
+                <div class="pub-content">
+                    <h4><a href="https://doi.org/10.1109/SCSE49731.2020.9313016" target="_blank">Impact of Metacognition and Age Group on Video Game Interface Design</a></h4>
+                    <p class="pub-authors">Harischandra, N.N., Jayakody, L.A., <strong>Madushanka, T.</strong>, & Madusanka, T.</p>
+                    <p class="pub-venue">Int'l Research Conference on Smart Computing and Systems Engineering</p>
+                </div>
+            </div>
+            <div class="pub-item fade-in" data-type="journal">
+                <div>
+                    <div class="pub-year">2015</div>
+                    <div class="pub-type">Journal</div>
+                </div>
+                <div class="pub-content">
+                    <h4><a href="https://zenodo.org/records/1100190" target="_blank">Customer Churn Prediction: A Cognitive Approach</a></h4>
+                    <p class="pub-authors">Senanayake, D., Muthugama, L., Mendis, L., & <strong>Madushanka, T.</strong></p>
+                    <p class="pub-venue">Int'l Journal of Computer and Information Engineering, 9(3), 767-773</p>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Header End -->
+    </section>
 
-
-    <!-- About Start -->
-    <div class="container-fluid py-5" id="about">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">About</h1>
-                <h1 class="position-absolute text-uppercase text-primary">About Me</h1>
+    <section class="education" id="education">
+        <div class="section-header fade-in">
+            <p class="section-label">Academic Journey</p>
+            <h2 class="section-title">Education</h2>
+        </div>
+        <div class="education-timeline">
+            <div class="edu-item fade-in">
+                <div class="edu-year">2022 — 2025</div>
+                <h3 class="edu-degree">Doctor of Philosophy</h3>
+                <p class="edu-institution">The Graduate University for Advanced Studies (SOKENDAI), Japan</p>
+                <p class="edu-details">Artificial Intelligence and Informatics</p>
             </div>
-            <div class="row align-items-center">
-                <div class="col-lg-5 pb-4 pb-lg-0">
-                    <img class="img-fluid rounded w-100" src="img/about.jpg" alt="">
-                </div>
-                <div class="col-lg-7">
-                    <h3 class="mb-4">Data Science & Machine Learning enthusiastic | Software Engineer | Lecturer</h3>
-                    <p>
-                        Welcome to my personal website! My name is Tiroshan, and I am a Software Engineer, Data Science,
-                        Machine Learning enthusiast, and lecturer.
-
-                        As a software engineer, I have experience in various programming languages and technologies,
-                        including Java, Python, Erlang, and C. I have hands-on experience with cloud services such as
-                        Azure, GCP, and AWS and orchestration frameworks like Kubernetes. I have worked on projects
-                        ranging from backend applications to machine learning models, and I am always eager to learn new
-                        skills and technologies.
-
-                        In the field of data science, I have experience working with large datasets, using tools such as
-                        Python to extract insights and make predictions. I have also worked with various machine
-                        learning algorithms, including supervised and unsupervised learning, and I have experience using
-                        libraries such as scikit-learn and pyspark.
-
-                        As a lecturer, I have experience teaching undergraduate courses on programming, software
-                        engineering, and cloud services. I am passionate about sharing my knowledge and experience with
-                        others, and I am always looking for new opportunities to do so. </p>
-                    <div class="row mb-3">
-                        <div class="col-sm-6 py-2">
-                            <h6>Name: <span class="text-secondary">Tiroshan Madushanka</span></h6>
-                        </div>
-                        <div class="col-sm-6 py-2">
-                            <h6>Birthday: <span class="text-secondary">11 February 1990</span></h6>
-                        </div>
-                        <div class="col-sm-6 py-2">
-                            <h6>Degree: <span class="text-secondary">Master in Informatics</span></h6>
-                        </div>
-                        <div class="col-sm-6 py-2">
-                            <h6>Experience: <span class="text-secondary">8 Years</span></h6>
-                        </div>
-                        <div class="col-sm-6 py-2">
-                            <h6>Phone: <span class="text-secondary">+081 80 9663 6718</span></h6>
-                        </div>
-                        <div class="col-sm-6 py-2">
-                            <h6>Email: <span class="text-secondary">tiroshanm@gmail.com</span></h6>
-                        </div>
-                        <!-- <div class="col-sm-6 py-2"><h6>Address: <span class="text-secondary">Matsudo, Chiba, Japan</span></h6></div> -->
-                        <!-- <div class="col-sm-6 py-2"><h6>Freelance: <span class="text-secondary">Available</span></h6></div> -->
-                    </div>
-                    <!-- <a href="" class="btn btn-outline-primary mr-4">Hire Me</a> -->
-                    <!-- <a href="" class="btn btn-outline-primary">Learn More</a> -->
-                </div>
+            <div class="edu-item fade-in">
+                <div class="edu-year">2020 — 2022</div>
+                <h3 class="edu-degree">Master of Informatics</h3>
+                <p class="edu-institution">SOKENDAI, Japan</p>
+                <p class="edu-details">AI and Informatics • JEES Scholarship</p>
+            </div>
+            <div class="edu-item fade-in">
+                <div class="edu-year">2010 — 2015</div>
+                <h3 class="edu-degree">B.Sc. Engineering (Honours)</h3>
+                <p class="edu-institution">University of Moratuwa, Sri Lanka</p>
+                <p class="edu-details">Computer Science & Engineering • GPA 3.58/4.2</p>
             </div>
         </div>
-    </div>
-    <!-- About End -->
+    </section>
 
-
-    <!-- Qualification Start -->
-    <div class="container-fluid py-5" id="qualification">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Quality</h1>
-                <h1 class="position-absolute text-uppercase text-primary">Education & Expericence</h1>
+    <section class="experience" id="experience">
+        <div class="section-header fade-in">
+            <p class="section-label">Professional Path</p>
+            <h2 class="section-title">Experience</h2>
+        </div>
+        <div class="experience-grid">
+            <div class="exp-card fade-in">
+                <div class="exp-period">2021 — 2025</div>
+                <h3 class="exp-role">Research Assistant</h3>
+                <p class="exp-org">National Institute of Informatics</p>
+                <p class="exp-location">Tokyo, Japan</p>
             </div>
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h3 class="mb-4">My Education</h3>
-                    <div class="border-left border-primary pt-2 pl-4 ml-2">
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Doctor of Philosophy - Informatics (reading)</h5>
-                            <p class="mb-2"><strong>The Graduate University for Advanced Studies, Japan</strong> |
-                                <small>2022 - 2025</small></p>
-                            <p>Conduct research on enhancing the Link Prediction of Knowledge Gaphs utilizing ensemble
-                                techniqes.</p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Master in Informatics</h5>
-                            <p class="mb-2"><strong>The Graduate University for Advanced Studies, Japan</strong> |
-                                <small>2020 - 2022</small></p>
-                            <p>Developed and evaluated an algorithm for enhancing Knowledge Graph Embedding by
-                                generating quality negatives - MDNCaching.</p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Bachelor of Science in Engineering - Computer Science</h5>
-                            <p class="mb-2"><strong>University of Moratuwa, Sri Lanka</strong> | <small>2010 -
-                                    2015</small></p>
-                            <p>Developed and evaluated an algorithm to enhance customer churn prediction propossing new
-                                clustering algorithm - KGSOM.</p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Certificate in JAVA Application Development</h5>
-                            <p class="mb-2"><strong>University of Colombo, Sri Lanka</strong> | <small>2010</small></p>
-                            <p>Fundementals and hands on expereince on JAVA Application Development.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <h3 class="mb-4">My Expericence</h3>
-                    <div class="border-left border-primary pt-2 pl-4 ml-2">
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Research Assistant</h5>
-                            <p class="mb-2"><strong>National Institute of Informatics, Japan</strong> | <small>2020 - To
-                                    date</small></p>
-                            <p>Research on effect of Negative Sampling in Knowledge Graph Embedding, enhancing Link
-                                Prediction results by eliminating false negatives from negative sample space</p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Software Engineer</h5>
-                            <p class="mb-2"><strong>Rozie Ai, USA (remote)</strong> | <small>2018 - To date</small></p>
-                            <p>Manage the micro service infrastructure of Rozie Ai platform and lead the DevOps and
-                                Back-end service implementation</p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Lecturer</h5>
-                            <p class="mb-2"><strong>University of Kelaniya, Sri Lanka</strong> | <small>2018 - To
-                                    date</small></p>
-                            <p>Conduct lectures on Software Engineering concepts and theories while guiding
-                                undergraduates on software engineering projects and research projects</p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Software Engineer</h5>
-                            <p class="mb-2"><strong>Zone24x7 Inc., Sri Lanka</strong> | <small>2015 - 2018</small></p>
-                            <p>Implemented Recommendation platform for KOHL’s Department store, USA and conducted
-                                researches on transforming physical department store experience to online</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="exp-card fade-in">
+                <div class="exp-period">2018 — Present</div>
+                <h3 class="exp-role">Lecturer</h3>
+                <p class="exp-org">University of Kelaniya</p>
+                <p class="exp-location">Sri Lanka</p>
+            </div>
+            <div class="exp-card fade-in">
+                <div class="exp-period">2018 — Present</div>
+                <h3 class="exp-role">Lead Technical Engineer</h3>
+                <p class="exp-org">Stealth AI Startup</p>
+                <p class="exp-location">USA (Remote)</p>
+            </div>
+            <div class="exp-card fade-in">
+                <div class="exp-period">2017 — 2018</div>
+                <h3 class="exp-role">Senior Software Engineer</h3>
+                <p class="exp-org">Zone 24x7 Private Limited</p>
+                <p class="exp-location">USA, Sri Lanka</p>
+            </div>
+            <div class="exp-card fade-in">
+                <div class="exp-period">2015 — 2017</div>
+                <h3 class="exp-role">Software Engineer</h3>
+                <p class="exp-org">Zone 24x7 Private Limited</p>
+                <p class="exp-location">USA, Sri Lanka</p>
             </div>
         </div>
-    </div>
-    <!-- Qualification End -->
+    </section>
 
-    <!-- Portfolio Start -->
-    <div class="container-fluid pt-5 pb-3" id="portfolio">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Research</h1>
-                <h1 class="position-absolute text-uppercase text-primary">My Publications</h1>
+    <section class="service" id="service">
+        <div class="section-header fade-in">
+            <p class="section-label">Academic Service</p>
+            <h2 class="section-title">Peer Review</h2>
+        </div>
+        <div class="service-grid">
+            <div class="service-item fade-in">
+                <div class="service-year">2025</div>
+                <p class="service-conf">ECML-PKDD</p>
+                <p class="service-role">PC Member</p>
             </div>
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <div class="border-left border-primary pt-2 pl-4 ml-2">
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">MDNCaching: A Strategy to Generate Quality Negatives for
-                                Knowledge Graph Embedding</h5>
-                            <!-- <p class="mb-2"><strong>IEA/AIE</strong> | <small>2022</small></p> -->
-                            <p>Madushanka, T., & Ichise, R. (2022). MDNCaching: A Strategy to Generate Quality Negatives
-                                for Knowledge Graph Embedding. International Conference on Industrial, Engineering &
-                                Other Applications of Applied Intelligent Systems (IEA/AIE), 877–888.</p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">A Novel Anomaly Detection Approach to Secure APIs from
-                                Cyberattacks</h5>
-                            <!-- <p class="mb-2"><strong>Rozie Ai, USA (remote)</strong> | <small>2018 - To date</small></p> -->
-                            <p>Ifthikar, A., Thennakoon, N., Malalgoda, S., Moraliyage, H., Jayawickrama, T.,
-                                Madushanka, T., & Hettiarachchi, S. (2021). A Novel Anomaly Detection Approach to Secure
-                                APIs from Cyberattacks. International Conference on Artificial Intelligence
-                                (AI-Cybersec@SGAI).</p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Building Automation System to Optimize Energy Utilization
-                                Acquiring the Best Performance of Appliances in a Distributed Network</h5>
-                            <!-- <p class="mb-2"><strong>University of Kelaniya, Sri Lanka</strong> | <small>2018 - To date</small></p> -->
-                            <p>Ranaweera, I., Madushanka,T., Ranaweera, C. (2020).Building Automation System to Optimize
-                                Energy Utilization Acquiring the Best Performance of Appliances in a Distributed
-                                Network, International Conference on Advances in Computing and Technology (ICACT),
-                                148-150.</p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Impact of metacognition and age group on contemporary
-                                video game interface and gameplay design</h5>
-                            <!-- <p class="mb-2"><strong>University of Kelaniya, Sri Lanka</strong> | <small>2018 - To date</small></p> -->
-                            <p>Harischandra, N.N., Jayakody, L.A., Madushanka, T., & Madusanka, T. (2020). Impact of
-                                metacognition and age group on contemporary video game interface and gameplay design.
-                                International Research Conference on Smart Computing and Systems Engineering (SCSE),
-                                117-123.</p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">Customer Churn Prediction: A Cognitive Approach</h5>
-                            <!-- <p class="mb-2"><strong>Zone24x7 Inc., Sri Lanka</strong> | <small>2015 - 2018</small></p> -->
-                            <p>Senanayake, D., Muthugama, L., Mendis, L., & Madushanka, T. (2015). Customer Churn
-                                Prediction: A Cognitive Approach. World Academy of Science, Engineering and Technology,
-                                International Journal of Computer, Electrical, Automation, Control and Information
-                                Engineering, 9, 767-773.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="service-item fade-in">
+                <div class="service-year">2025</div>
+                <p class="service-conf">IJCAI</p>
+                <p class="service-role">PC Member</p>
+            </div>
+            <div class="service-item fade-in">
+                <div class="service-year">2025</div>
+                <p class="service-conf">ICSC</p>
+                <p class="service-role">PC Member</p>
+            </div>
+            <div class="service-item fade-in">
+                <div class="service-year">2024</div>
+                <p class="service-conf">EKAW</p>
+                <p class="service-role">Reviewer</p>
+            </div>
+            <div class="service-item fade-in">
+                <div class="service-year">2023</div>
+                <p class="service-conf">ISWC</p>
+                <p class="service-role">Reviewer</p>
             </div>
         </div>
-    </div>
-    <!-- Portfolio End -->
+    </section>
 
-
-    <!-- Scolorships Start -->
-    <div class="container-fluid pt-5 pb-3" id="achievements">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Achievements
-                </h1>
-                <h1 class="position-absolute text-uppercase text-primary">My Awards</h1>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <div class="border-left border-primary pt-2 pl-4 ml-2">
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">JEES Scholarships</h5>
-                            <p class="mb-2"><strong>Japan Educational Exchanges and Services (JEES)</strong> |
-                                <small>2020-2022</small></p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">IEEE Xtreme Coding Competition - World Rank 397</h5>
-                            <p class="mb-2"><strong>IEEE</strong> | <small>2013</small></p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">IEEE Xtreme Coding Competition - World Rank 465</h5>
-                            <p class="mb-2"><strong>IEEE</strong> | <small>2012</small></p>
-                        </div>
-                        <div class="position-relative mb-4">
-                            <i class="far fa-dot-circle text-primary position-absolute"
-                                style="top: 2px; left: -32px;"></i>
-                            <h5 class="font-weight-bold mb-1">General Certification Examination - Advanced Level
-                                (Physical Science) - Sri Lanka Rank 138</h5>
-                            <p class="mb-2"><strong>Examination Department, Sri Lanka</strong> | <small>2009</small></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="contact" id="contact">
+        <div class="section-header fade-in">
+            <p class="section-label">Get in Touch</p>
+            <h2 class="section-title">Let's Connect</h2>
         </div>
-    </div>
-    <!-- Scolorships End -->
-
-
-    <!-- Blog Start -->
-    <div class="container-fluid pt-5" id="blog">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Blog</h1>
-                <h1 class="position-absolute text-uppercase text-primary">Latest Blog</h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 mb-5">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded w-100" src="img/Banner-VECTORS.png" alt="">
-                        <div class="blog-date">
-                            <h4 class="font-weight-bold mb-n1">25</h4>
-                            <small class="text-white text-uppercase">Jan</small>
-                        </div>
-                    </div>
-                    <h5 class="font-weight-medium mb-4">Vectors: Understanding the Fundamentals.</h5>
-                    <a class="btn btn-sm btn-outline-primary py-2"
-                        href="https://medium.com/zero-to/vectors-understanding-the-fundamentals-43f3fb99fc86">Read
-                        More</a>
-                </div>
-                <div class="col-lg-4 mb-5">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded w-100" src="img/Banner-CHATGPT3.png" alt="">
-                        <div class="blog-date">
-                            <h4 class="font-weight-bold mb-n1">22</h4>
-                            <small class="text-white text-uppercase">Jan</small>
-                        </div>
-                    </div>
-                    <h5 class="font-weight-medium mb-4">Tips and Tricks for Generating High-Quality Text with ChatGPT-3
-                        for Content Creation.</h5>
-                    <a class="btn btn-sm btn-outline-primary py-2"
-                        href="https://medium.com/zero-to/tips-and-tricks-for-generating-high-quality-text-with-chatgpt-3-for-content-creation-baa116f5d365">Read
-                        More</a>
-                </div>
-                <div class="col-lg-4 mb-5">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded w-100" src="img/Banner-CHJOB.png" alt="">
-                        <div class="blog-date">
-                            <h4 class="font-weight-bold mb-n1">20</h4>
-                            <small class="text-white text-uppercase">Jan</small>
-                        </div>
-                    </div>
-                    <h5 class="font-weight-medium mb-4">ChatGPT: The Advanced Language Model Changing the Way We
-                        Interact with Machines and Its Potential Impacts.</h5>
-                    <a class="btn btn-sm btn-outline-primary py-2"
-                        href="https://medium.com/@tiroshanm/chatgpt-the-advanced-language-model-changing-the-way-we-interact-with-machines-and-its-potential-6af4abbe7b25">Read
-                        More</a>
-                </div>
-                <div class="col-lg-4 mb-5">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded w-100" src="img/Banner-KG.png" alt="">
-                        <div class="blog-date">
-                            <h4 class="font-weight-bold mb-n1">21</h4>
-                            <small class="text-white text-uppercase">Dec</small>
-                        </div>
-                    </div>
-                    <h5 class="font-weight-medium mb-4">Explain the basic idea of the Knowledge Graphs.</h5>
-                    <a class="btn btn-sm btn-outline-primary py-2"
-                        href="https://medium.com/zero-to/knowledge-graphs-9f09df1d5d89">Read More</a>
-                </div>
-                <div class="col-lg-4 mb-5">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded w-100" src="img/Banner-API.png" alt="">
-                        <div class="blog-date">
-                            <h4 class="font-weight-bold mb-n1">26</h4>
-                            <small class="text-white text-uppercase">Jul</small>
-                        </div>
-                    </div>
-                    <h5 class="font-weight-medium mb-4">API Manage with Google ESP + Google Endpoints + Ingress in
-                        Kubernetes</h5>
-                    <a class="btn btn-sm btn-outline-primary py-2"
-                        href="https://medium.com/zero-to/api-manage-with-google-esp-google-endpoints-ingress-in-kubernetes-5b86462ccbf">Read
-                        More</a>
-                </div>
-                <div class="col-lg-4 mb-5">
-                    <div class="position-relative mb-4">
-                        <img class="img-fluid rounded w-100" src="img/Banner-KUBE.png" alt="">
-                        <div class="blog-date">
-                            <h4 class="font-weight-bold mb-n1">08</h4>
-                            <small class="text-white text-uppercase">Jun</small>
-                        </div>
-                    </div>
-                    <h5 class="font-weight-medium mb-4">Explains the concepts of Kubernetes container orchatration
-                        platform.</h5>
-                    <a class="btn btn-sm btn-outline-primary py-2"
-                        href="https://medium.com/zero-to/kubernetes-concepts-ac434f67c911">Read More</a>
-                </div>
-            </div>
+        <div class="contact-emails fade-in">
+            <a href="mailto:tiroshanm@gmail.com" class="contact-email">tiroshanm@gmail.com</a>
+            <span class="email-divider">|</span>
+            <a href="mailto:tiroshanm@kln.ac.lk" class="contact-email">tiroshanm@kln.ac.lk</a>
         </div>
-    </div>
-    <!-- Blog End -->
-
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-primary text-white mt-5 py-5 px-sm-3 px-md-5">
-        <div class="container text-center py-6">
-            <div class="d-flex justify-content-center mb-7">
-                <a class="btn btn-light btn-social mr-2" href="https://twitter.com/tiroshanm"><i
-                        class="fab fa-twitter"></i></a>
-                <a class="btn btn-light btn-social mr-2" href="https://www.facebook.com/tiroshanm"><i
-                        class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/tiroshanm/"><i
-                        class="fab fa-linkedin-in"></i></a>
-                <a class="btn btn-light btn-social mr-2" href="https://www.instagram.com/tiroshanm/"><i
-                        class="fab fa-instagram"></i></a>
-                <a class="btn btn-light btn-social mr-2" href="https://medium.com/@tiroshanm"><i
-                        class="fab fa-medium"></i></a>
-                <a class="btn btn-light btn-social mr-2"
-                    href="https://www.researchgate.net/profile/Tiroshan-Madushanka"><i
-                        class="fab fa-researchgate"></i></a>
-                <a class="btn btn-light btn-social mr-2" href="https://orcid.org/0000-0001-6627-1477"><i
-                        class="fab fa-orcid"></i></a>
-
-            </div>
-            <p class="m-0">&copy; <a class="text-white font-weight-bold" href="#">tiroshanm.github.io</a>. All Rights
-                Reserved. Designed by Tiroshan.</a>
-            </p>
+        <div class="contact-links fade-in">
+            <a href="https://scholar.google.com/citations?user=-f65TiAAAAAJ&hl=en" target="_blank">Google Scholar</a>
+            <a href="https://github.com/tiroshanm" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/tiroshanm/" target="_blank">LinkedIn</a>
+            <a href="https://orcid.org/0000-0001-6627-1477" target="_blank">ORCID</a>
+            <a href="https://www.researchgate.net/profile/Tiroshan-Madushanka" target="_blank">ResearchGate</a>
+            <a href="https://medium.com/@tiroshanm" target="_blank">Medium</a>
+            <a href="https://www.facebook.com/pub.tiroshanm/" target="_blank">Facebook</a>
         </div>
-    </div>
-    <!-- Footer End -->
+    </section>
 
-    <!-- Scroll to Bottom -->
-    <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
+    <footer>
+        <p>© 2025 Tiroshan Madushanka</p>
+    </footer>
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-outline-dark px-0 back-to-top"><i class="fa fa-angle-double-up"></i></a>
+    <script>
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
 
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/typed/typed.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
+        // Fade in animations on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 
-    <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
+        fadeElements.forEach(el => observer.observe(el));
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+        // Publication filter
+        const filterBtns = document.querySelectorAll('.pub-category-btn');
+        const pubItems = document.querySelectorAll('.pub-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                pubItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.type === filter) {
+                        item.style.display = 'grid';
+                        setTimeout(() => item.style.opacity = '1', 10);
+                    } else {
+                        item.style.opacity = '0';
+                        setTimeout(() => item.style.display = 'none', 300);
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
-
 </html>

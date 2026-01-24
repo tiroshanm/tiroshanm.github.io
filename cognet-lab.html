@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CogNet Lab | Dr. Tiroshan Madushanka</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white: #ffffff;
+            --off-white: #f8f8f8;
+            --cream: #f5f5f5;
+            --light-gray: #e8e8e6;
+            --medium-gray: #999999;
+            --dark-gray: #4a4a4a;
+            --charcoal: #2a2a2a;
+            --black: #1a1a1a;
+            --accent: #2b5770;
+            --accent-light: #3eb5a6;
+            --navy: #1e3a5f;
+            --teal: #3eb5a6;
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'Source Sans 3', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: #f8f8f8;
+            color: var(--charcoal);
+            line-height: 1.7;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--accent-light);
+            color: var(--black);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(248, 248, 248, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid transparent;
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            border-bottom: 1px solid var(--light-gray);
+            padding: 1rem 4rem;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            color: var(--black);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--teal);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--black);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links .lab-link {
+            color: var(--teal);
+            font-weight: 500;
+        }
+
+        .nav-links .lab-link:hover {
+            color: var(--navy);
+        }
+
+        /* Hero Section */
+        .lab-hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10rem 4rem 3rem;
+            position: relative;
+            background: linear-gradient(135deg, #f8f8f8 0%, #f5f5f5 50%, #f2f2f2 100%);
+            text-align: center;
+        }
+
+        .lab-hero::before {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(43, 87, 112, 0.08) 0%, transparent 70%);
+            filter: blur(80px);
+        }
+
+        .lab-hero-content {
+            max-width: 800px;
+            animation: fadeUp 1s ease-out;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .lab-logo {
+            margin: 0 auto 2rem;
+        }
+
+        .lab-logo img {
+            max-width: 420px;
+            width: 100%;
+            height: auto;
+        }
+
+        .lab-description {
+            font-size: 1rem;
+            color: var(--dark-gray);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 4rem 4rem;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 300;
+            color: var(--navy);
+            letter-spacing: -0.01em;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: #f8f8f8;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.4s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .project-card:hover {
+            border-left-color: var(--teal);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+        }
+
+        .project-number {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--light-gray);
+            font-style: italic;
+            line-height: 1;
+        }
+
+        .project-id {
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .project-title {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+            line-height: 1.3;
+            padding-right: 2rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            font-size: 0.68rem;
+            padding: 0.25rem 0.6rem;
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            color: var(--dark-gray);
+            letter-spacing: 0.03em;
+        }
+
+        .project-description {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-publications {
+            border-top: 1px solid var(--light-gray);
+            padding-top: 1rem;
+        }
+
+        .project-publications h5 {
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--medium-gray);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .project-publications ul {
+            list-style: none;
+        }
+
+        .project-publications li {
+            font-size: 0.82rem;
+            color: var(--dark-gray);
+            padding: 0.3rem 0;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .project-publications li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-size: 0.75rem;
+        }
+
+        /* Join Section */
+        .join-lab {
+            padding: 4rem 4rem;
+            background: #f2f2f2;
+            text-align: center;
+        }
+
+        .join-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .join-lab h2 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .join-lab p {
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--navy);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: var(--teal);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            padding: 2rem 4rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        footer a {
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--black);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .lab-hero {
+                padding: 8rem 2rem 3rem;
+            }
+
+            .projects {
+                padding: 3rem 2rem;
+            }
+
+            .project-card {
+                padding: 1.5rem;
+            }
+
+            .join-lab {
+                padding: 3rem 2rem;
+            }
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--teal);
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <nav id="navbar">
+        <a href="research-portfolio.html" class="logo">T<span>.</span>Madushanka</a>
+        <ul class="nav-links">
+            <li><a href="research-portfolio.html">Portfolio</a></li>
+            <li><a href="research-portfolio.html#publications">Publications</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#join" class="lab-link">Join Lab</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <section class="lab-hero">
+        <div class="lab-hero-content">
+            <div class="lab-logo">
+                <img src="cognet-logo.png" alt="CogNet Lab Logo">
+            </div>
+            <p class="lab-description">
+                Exploring the frontiers of artificial intelligence, knowledge systems, and human-centered computing. 
+                We build intelligent systems that understand, reason, and interact with the world.
+            </p>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="section-header fade-in">
+            <p class="section-label">Research Focus</p>
+            <h2 class="section-title">Active Projects</h2>
+        </div>
+        <div class="projects-grid">
+            
+            <div class="project-card fade-in">
+                <span class="project-number">01</span>
+                <p class="project-id">DecentraGov-Lab</p>
+                <h3 class="project-title">Decentralized Trust & Digital Infrastructure</h3>
+                <div class="project-tags">
+                    <span class="project-tag">Blockchain</span>
+                    <span class="project-tag">Digital Governance</span>
+                    <span class="project-tag">Secure Rights</span>
+                </div>
+                <p class="project-description">
+                    Exploring how blockchain can enable trustworthy digital ecosystems for government, enterprise, and public services. We design decentralized frameworks for vehicle registration, digital rights management, and secure asset transfer with tamper-proof, transparent architectures.
+                </p>
+                <div class="project-publications">
+                    <h5>Related Publications</h5>
+                    <ul>
+                        <li>Blockchain for Vehicle Registration (2024)</li>
+                        <li>SecureRights: Blockchain-Powered DRM Framework (2024)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <span class="project-number">02</span>
+                <p class="project-id">AutoCyber-Sec</p>
+                <h3 class="project-title">Autonomous Cybersecurity for API & Cloud Systems</h3>
+                <div class="project-tags">
+                    <span class="project-tag">Anomaly Detection</span>
+                    <span class="project-tag">API Security</span>
+                    <span class="project-tag">Threat Modeling</span>
+                </div>
+                <p class="project-description">
+                    Developing intelligent systems that autonomously detect, analyze, and mitigate cyber threats in API-driven and cloud-native environments. Using anomaly detection, behavioral modeling, and knowledge-based threat reasoning to protect modern distributed systems.
+                </p>
+                <div class="project-publications">
+                    <h5>Related Publications</h5>
+                    <ul>
+                        <li>Anomaly Detection for API Security (2021)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <span class="project-number">03</span>
+                <p class="project-id">PathAI-Nav</p>
+                <h3 class="project-title">Multi-Agent Pathfinding & Scalable Navigation</h3>
+                <div class="project-tags">
+                    <span class="project-tag">A* Optimization</span>
+                    <span class="project-tag">Recast/Detour</span>
+                    <span class="project-tag">Parallel Computing</span>
+                    <span class="project-tag">Game AI</span>
+                </div>
+                <p class="project-description">
+                    Investigating scalable algorithms for pathfinding and spatial reasoning in dynamic environments. Current work explores multi-threaded A* pathfinding, real-time navigation mesh updates, and AI-assisted optimization for games, robotics, and simulation platforms.
+                </p>
+                <div class="project-publications">
+                    <h5>Related Submissions</h5>
+                    <ul>
+                        <li>Multi-threaded Recast-Based A* Pathfinding for Scalable Navigation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <span class="project-number">04</span>
+                <p class="project-id">AI4-SE-Quality</p>
+                <h3 class="project-title">AI-Driven Software Engineering Quality & Reliability</h3>
+                <div class="project-tags">
+                    <span class="project-tag">AI-assisted Testing</span>
+                    <span class="project-tag">SQA Automation</span>
+                    <span class="project-tag">Industry Adoption</span>
+                </div>
+                <p class="project-description">
+                    Studying the role of AI in improving software quality assurance processes. Analyzing capabilities, limitations, and practical barriers to adoption. Building intelligent agents for automated test generation and defect prediction across the software engineering lifecycle.
+                </p>
+                <div class="project-publications">
+                    <h5>Related Submissions</h5>
+                    <ul>
+                        <li>AI-Driven Software Quality Assurance: Systematic Literature Review</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <span class="project-number">05</span>
+                <p class="project-id">Trust-SemanticAI</p>
+                <h3 class="project-title">Trusted Knowledge Systems & Semantic AI</h3>
+                <div class="project-tags">
+                    <span class="project-tag">Semantic Web</span>
+                    <span class="project-tag">Provenance</span>
+                    <span class="project-tag">Explainable AI</span>
+                </div>
+                <p class="project-description">
+                    Exploring how semantic technologies bring structure, trust, and explainability to AI-driven systems. Investigating provenance, trust scoring, and transparent reasoning in knowledge-driven applications for enterprise and public-sector use.
+                </p>
+                <div class="project-publications">
+                    <h5>Related Publications</h5>
+                    <ul>
+                        <li>TuckerDNCaching: Negative Sampling with Tucker Decomposition (2023)</li>
+                        <li>MDNCaching: Quality Negatives for KG Embedding (2022)</li>
+                        <li>Negative Sampling in KG Representation Learning: A Review (2024)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <span class="project-number">06</span>
+                <p class="project-id">Cognitive-AI Systems</p>
+                <h3 class="project-title">Human-Centered AI & Cognitive Computing</h3>
+                <div class="project-tags">
+                    <span class="project-tag">HCI</span>
+                    <span class="project-tag">Metacognition</span>
+                    <span class="project-tag">User Behavior</span>
+                </div>
+                <p class="project-description">
+                    Understanding how human cognition, age, and behavior influence interactions with AI-driven systems. Designing adaptive interfaces and personalized interaction models that improve usability, accessibility, and user satisfaction in intelligent applications.
+                </p>
+                <div class="project-publications">
+                    <h5>Related Publications</h5>
+                    <ul>
+                        <li>Impact of Metacognition and Age on Game UI Design (2020)</li>
+                        <li>Customer Churn Prediction: A Cognitive Approach (2015)</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="join-lab" id="join">
+        <div class="join-content fade-in">
+            <h2>Join CogNet Lab</h2>
+            <p>
+                We're always looking for motivated researchers, students, and collaborators who share our passion for 
+                intelligent systems, knowledge engineering, and human-centered AI. If you're interested in pursuing 
+                research in any of our focus areas, we'd love to hear from you.
+            </p>
+            <a href="mailto:tiroshanm@kln.ac.lk" class="contact-btn">Get in Touch</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>CogNet Lab • <a href="research-portfolio.html">Dr. Tiroshan Madushanka</a> • University of Kelaniya</p>
+    </footer>
+
+    <script>
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in animations on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
