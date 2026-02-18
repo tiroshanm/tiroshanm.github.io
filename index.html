@@ -602,6 +602,146 @@
             margin-top: 0.15rem;
         }
 
+        /* ── Teaching Section — Cards ── */
+        .teaching {
+            background: #f5f5f5;
+            padding: 3rem 4rem;
+        }
+
+        .teaching-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .teaching-card {
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .teaching-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.4s ease;
+        }
+
+        .teaching-card:hover {
+            border-color: var(--accent-light);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.05);
+            transform: translateY(-3px);
+        }
+
+        .teaching-card:hover::before {
+            width: 100%;
+        }
+
+        .teaching-card-top {
+            padding: 1.5rem 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .teaching-card-code {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            background: #f5f3f0;
+            padding: 0.25rem 0.6rem;
+        }
+
+        .teaching-card-role {
+            font-size: 0.6rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--medium-gray);
+        }
+
+        .teaching-card-body {
+            padding: 0.8rem 1.5rem 1.2rem;
+        }
+
+        .teaching-card-title {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--black);
+            line-height: 1.3;
+            margin-bottom: 0.4rem;
+        }
+
+        .teaching-card-programme {
+            font-size: 0.78rem;
+            color: var(--dark-gray);
+            margin-bottom: 0.15rem;
+        }
+
+        .teaching-card-institution {
+            font-size: 0.72rem;
+            color: var(--medium-gray);
+            font-style: italic;
+        }
+
+        .teaching-card-footer {
+            padding: 0.8rem 1.5rem;
+            border-top: 1px solid #f5f5f5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .teaching-card-tags {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .teaching-tag {
+            font-size: 0.6rem;
+            letter-spacing: 0.04em;
+            color: var(--dark-gray);
+            background: #f5f5f5;
+            padding: 0.2rem 0.5rem;
+        }
+
+        .teaching-card-link {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .teaching-card-link:hover {
+            color: var(--black);
+        }
+
+        .teaching-card-link svg {
+            width: 13px;
+            height: 13px;
+        }
+
+        @media (max-width: 768px) {
+            .teaching-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Service Section - COMPACT */
         .service {
             background: #f2f2f2;
@@ -854,6 +994,7 @@
             <li><a href="#publications">Publications</a></li>
             <li><a href="#education">Education</a></li>
             <li><a href="#experience">Experience</a></li>
+            <li><a href="#teaching">Teaching</a></li>
             <li><a href="#service">Service</a></li>
             <li><a href="cognet-lab.html" class="lab-link">CogNet Lab</a></li>
             <li><a href="blog.html" class="lab-link">Blog</a></li>
@@ -1119,6 +1260,67 @@
                 <p class="exp-org">Omobio Private Limited</p>
                 <p class="exp-location"> Sri Lanka</p>
             </div>
+        </div>
+    </section>
+
+    <!-- ── Teaching Section — Cards ── -->
+    <section class="teaching" id="teaching">
+        <div class="section-header fade-in">
+            <p class="section-label">Knowledge Sharing</p>
+            <h2 class="section-title">Teaching</h2>
+        </div>
+        <div class="teaching-cards">
+
+            <!-- Semantic Web & Ontology -->
+            <div class="teaching-card fade-in">
+                <div class="teaching-card-top">
+                    <span class="teaching-card-code">SENG-42273</span>
+                    <span class="teaching-card-role">Lecturer</span>
+                </div>
+                <div class="teaching-card-body">
+                    <h3 class="teaching-card-title">Semantic Web & Ontology</h3>
+                    <p class="teaching-card-programme">Software Engineering Teaching Unit · Undergraduate</p>
+                    <p class="teaching-card-institution">University of Kelaniya, Sri Lanka</p>
+                </div>
+                <div class="teaching-card-footer">
+                    <div class="teaching-card-tags">
+                        <span class="teaching-tag">RDF</span>
+                        <span class="teaching-tag">OWL</span>
+                        <span class="teaching-tag">SPARQL</span>
+                        <span class="teaching-tag">14 Weeks</span>
+                    </div>
+                    <a href="https://tiroshanm.github.io/SENG-42273/" class="teaching-card-link" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Materials
+                    </a>
+                </div>
+            </div>
+
+            <!-- Advanced Programming -->
+            <div class="teaching-card fade-in">
+                <div class="teaching-card-top">
+                    <span class="teaching-card-code">CMP 7001</span>
+                    <span class="teaching-card-role">Visiting Lecturer</span>
+                </div>
+                <div class="teaching-card-body">
+                    <h3 class="teaching-card-title">Advanced Programming</h3>
+                    <p class="teaching-card-programme">MSc IT Programme</p>
+                    <p class="teaching-card-institution">ICBT Campus, Sri Lanka</p>
+                </div>
+                <div class="teaching-card-footer">
+                    <div class="teaching-card-tags">
+                        <span class="teaching-tag">OOP</span>
+                        <span class="teaching-tag">SOLID</span>
+                        <span class="teaching-tag">Design Patterns</span>
+                        <span class="teaching-tag">9 Lectures</span>
+                    </div>
+                    <a href="https://tiroshanm.github.io/CMP-7001/" class="teaching-card-link" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Materials
+                    </a>
+                </div>
+            </div>
+
         </div>
     </section>
 
