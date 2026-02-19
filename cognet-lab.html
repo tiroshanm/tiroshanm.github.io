@@ -88,6 +88,7 @@
             display: flex;
             gap: 3rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -127,6 +128,18 @@
 
         .nav-links .lab-link:hover {
             color: var(--navy);
+        }
+
+        .nav-links .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .nav-links .github-link svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
         }
 
         /* Hero Section */
@@ -183,8 +196,33 @@
             font-size: 1rem;
             color: var(--dark-gray);
             max-width: 600px;
-            margin: 0 auto;
+            margin: 0 auto 1.5rem;
             line-height: 1.8;
+        }
+
+        .hero-github {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-size: 0.82rem;
+            letter-spacing: 0.05em;
+            padding: 0.5rem 1.2rem;
+            border: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+
+        .hero-github svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .hero-github:hover {
+            color: var(--navy);
+            border-color: var(--teal);
+            background: var(--white);
         }
 
         /* Projects Section */
@@ -324,6 +362,262 @@
             font-size: 0.75rem;
         }
 
+        /* Publications Table */
+        .publications-section {
+            padding: 4rem 4rem;
+            background: #f8f8f8;
+        }
+
+        .pub-table-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+
+        .pub-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        .pub-table thead th {
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--medium-gray);
+            font-weight: 500;
+            text-align: left;
+            padding: 0.8rem 1rem;
+            border-bottom: 2px solid var(--light-gray);
+            white-space: nowrap;
+        }
+
+        .pub-table tbody tr {
+            border-bottom: 1px solid var(--light-gray);
+            transition: background 0.2s ease;
+        }
+
+        .pub-table tbody tr:hover {
+            background: var(--white);
+        }
+
+        .pub-table td {
+            padding: 1rem;
+            vertical-align: top;
+            color: var(--dark-gray);
+            line-height: 1.5;
+        }
+
+        .pub-table .col-year {
+            width: 60px;
+            font-weight: 500;
+            color: var(--navy);
+            font-size: 0.82rem;
+        }
+
+        .pub-table .col-title {
+            font-family: var(--font-serif);
+            font-size: 1.02rem;
+            color: var(--navy);
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .pub-table .col-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .pub-table .col-title a:hover {
+            color: var(--teal);
+        }
+
+        .pub-table .col-authors {
+            font-size: 0.82rem;
+            white-space: nowrap;
+        }
+
+        .pub-table .col-authors .self {
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        .pub-table .col-venue {
+            font-size: 0.8rem;
+            color: var(--medium-gray);
+            font-style: italic;
+            min-width: 180px;
+        }
+
+        @media (max-width: 768px) {
+            .publications-section {
+                padding: 3rem 1rem;
+            }
+
+            .pub-table thead {
+                display: none;
+            }
+
+            .pub-table, .pub-table tbody, .pub-table tr, .pub-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .pub-table tr {
+                padding: 1rem 0;
+                border-bottom: 1px solid var(--light-gray);
+            }
+
+            .pub-table td {
+                padding: 0.2rem 0.5rem;
+            }
+
+            .pub-table .col-year {
+                font-size: 0.7rem;
+                letter-spacing: 0.1em;
+                color: var(--white);
+                background: var(--navy);
+                display: inline-block;
+                padding: 0.15rem 0.5rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .pub-table .col-authors {
+                white-space: normal;
+            }
+        }
+
+        /* Year Filters */
+        .pub-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .pub-filter-btn {
+            padding: 0.4rem 1rem;
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            font-weight: 500;
+            border: 1px solid var(--light-gray);
+            background: var(--white);
+            color: var(--dark-gray);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .pub-filter-btn:hover {
+            border-color: var(--teal);
+            color: var(--navy);
+        }
+
+        .pub-filter-btn.active {
+            background: var(--navy);
+            color: var(--white);
+            border-color: var(--navy);
+        }
+
+        .pub-table tbody tr {
+            transition: opacity 0.3s ease, background 0.2s ease;
+        }
+
+        .pub-table tbody tr.hidden-row {
+            display: none;
+        }
+
+        /* Pagination */
+        .pub-pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            max-width: 1100px;
+            margin: 1.5rem auto 0;
+            padding: 0 0.2rem;
+        }
+
+        .pub-page-info {
+            font-size: 0.78rem;
+            color: var(--medium-gray);
+        }
+
+        .pub-page-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .pub-page-btn {
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-weight: 500;
+            border: 1px solid var(--light-gray);
+            background: var(--white);
+            color: var(--dark-gray);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .pub-page-btn:hover:not(:disabled) {
+            border-color: var(--teal);
+            color: var(--navy);
+        }
+
+        .pub-page-btn.active {
+            background: var(--navy);
+            color: var(--white);
+            border-color: var(--navy);
+        }
+
+        .pub-page-btn:disabled {
+            opacity: 0.35;
+            cursor: default;
+        }
+
+        .pub-page-btn.nav-btn {
+            width: auto;
+            padding: 0 0.6rem;
+            font-size: 0.72rem;
+            letter-spacing: 0.05em;
+        }
+
+        .pub-per-page {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pub-per-page label {
+            font-size: 0.75rem;
+            color: var(--medium-gray);
+            letter-spacing: 0.05em;
+        }
+
+        .pub-per-page select {
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            padding: 0.3rem 0.5rem;
+            border: 1px solid var(--light-gray);
+            background: var(--white);
+            color: var(--dark-gray);
+            cursor: pointer;
+            transition: border-color 0.25s ease;
+        }
+
+        .pub-per-page select:hover {
+            border-color: var(--teal);
+        }
+
         /* Join Section */
         .join-lab {
             padding: 4rem 4rem;
@@ -351,6 +645,13 @@
             line-height: 1.7;
         }
 
+        .join-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         .contact-btn {
             display: inline-block;
             padding: 0.8rem 2rem;
@@ -367,11 +668,45 @@
             background: var(--teal);
         }
 
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            color: var(--navy);
+            border: 1px solid var(--navy);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .github-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .github-btn:hover {
+            background: var(--navy);
+            color: var(--white);
+        }
+
         /* Footer */
         footer {
             background: var(--navy);
             padding: 2rem 4rem;
             text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
 
         footer p {
@@ -386,6 +721,26 @@
 
         footer a:hover {
             color: var(--white);
+        }
+
+        .footer-github {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.75rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-github svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+
+        .footer-github:hover {
+            color: var(--teal);
         }
 
         /* Mobile Menu */
@@ -408,9 +763,14 @@
 
         /* Animations */
         .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-in.hidden {
             opacity: 0;
             transform: translateY(15px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .fade-in.visible {
@@ -450,6 +810,10 @@
                 padding: 1.5rem;
             }
 
+            .publications-section {
+                padding: 3rem 2rem;
+            }
+
             .join-lab {
                 padding: 3rem 2rem;
             }
@@ -474,9 +838,10 @@
         <a href="index.html" class="logo">T<span>.</span>Madushanka</a>
         <ul class="nav-links">
             <li><a href="index.html">Portfolio</a></li>
-            <li><a href="index.html#publications">Publications</a></li>
-            <li><a href="#projects">Projects</a></li>
+            <li><a href="#projects">Research</a></li>
+            <li><a href="#publications">Publications</a></li>
             <li><a href="#join" class="lab-link">Join Lab</a></li>
+            <li><a href="https://github.com/CogNet-Lab" target="_blank" class="github-link"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></li>
         </ul>
         <button class="mobile-menu-btn" aria-label="Menu">
             <span></span>
@@ -491,9 +856,13 @@
                 <img src="cognet-logo.png" alt="CogNet Lab Logo">
             </div>
             <p class="lab-description">
-                Exploring the frontiers of artificial intelligence, knowledge systems, and human-centered computing. 
+                Exploring the frontiers of artificial intelligence, knowledge systems, and human-centered computing.
                 We build intelligent systems that understand, reason, and interact with the world.
             </p>
+            <a href="https://github.com/CogNet-Lab" target="_blank" class="hero-github">
+                <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                github.com/CogNet-Lab
+            </a>
         </div>
     </section>
 
@@ -503,122 +872,65 @@
             <h2 class="section-title">Active Projects</h2>
         </div>
         <div class="projects-grid">
-            
+
             <div class="project-card fade-in">
                 <span class="project-number">01</span>
-                <p class="project-id">DecentraGov-Lab</p>
-                <h3 class="project-title">Decentralized Trust & Digital Infrastructure</h3>
+                <p class="project-id">Onto-KGR</p>
+                <h3 class="project-title">Ontology-Enriched Knowledge Graph Construction & Representation Learning</h3>
                 <div class="project-tags">
-                    <span class="project-tag">Blockchain</span>
-                    <span class="project-tag">Digital Governance</span>
-                    <span class="project-tag">Secure Rights</span>
+                    <span class="project-tag">Ontology Engineering</span>
+                    <span class="project-tag">KG Embeddings</span>
+                    <span class="project-tag">Negative Sampling</span>
+                    <span class="project-tag">Cross-Domain KGs</span>
                 </div>
                 <p class="project-description">
-                    Exploring how blockchain can enable trustworthy digital ecosystems for government, enterprise, and public services. We design decentralized frameworks for vehicle registration, digital rights management, and secure asset transfer with tamper-proof, transparent architectures.
+                    Advancing knowledge graph representation learning through ontology-guided construction and embedding methods. This line integrates multidisciplinary ontology building with state-of-the-art negative sampling strategies, textual knowledge distillation, and tensor decomposition techniques to produce structurally richer and semantically grounded KG embeddings across domains such as healthcare, governance, and enterprise systems.
                 </p>
                 <div class="project-publications">
                     <h5>Related Publications</h5>
                     <ul>
-                        <li>Blockchain for Vehicle Registration (2024)</li>
-                        <li>SecureRights: Blockchain-Powered DRM Framework (2024)</li>
+                        <li>Negative Sampling in KG Representation Learning: A Review (2024)</li>
+                        <li>TuckerDNCaching: Negative Sampling with Tucker Decomposition (2023)</li>
+                        <li>MDNCaching: Quality Negatives for KG Embedding (2022)</li>
+                        <li>Text-KG Distill: Textual Knowledge Distillation for Enhanced KG Embeddings (2024)</li>
                     </ul>
                 </div>
             </div>
 
             <div class="project-card fade-in">
                 <span class="project-number">02</span>
-                <p class="project-id">AutoCyber-Sec</p>
-                <h3 class="project-title">Autonomous Cybersecurity for API & Cloud Systems</h3>
+                <p class="project-id">AI4SE-Lab</p>
+                <h3 class="project-title">Application of AI in Software Engineering</h3>
                 <div class="project-tags">
+                    <span class="project-tag">Agentic AI</span>
+                    <span class="project-tag">SQA Automation</span>
                     <span class="project-tag">Anomaly Detection</span>
                     <span class="project-tag">API Security</span>
-                    <span class="project-tag">Threat Modeling</span>
                 </div>
                 <p class="project-description">
-                    Developing intelligent systems that autonomously detect, analyze, and mitigate cyber threats in API-driven and cloud-native environments. Using anomaly detection, behavioral modeling, and knowledge-based threat reasoning to protect modern distributed systems.
+                    Investigating how AI transforms software engineering practices — from autonomous quality assurance and intelligent defect prediction to real-time anomaly detection in API-driven and cloud-native systems. This project combines LLM-powered agents for automated test generation, self-healing test suites, and adaptive CI/CD pipelines with behavioral modeling techniques that autonomously detect and mitigate cyber threats in modern distributed architectures.
                 </p>
                 <div class="project-publications">
                     <h5>Related Publications</h5>
                     <ul>
-                        <li>Anomaly Detection for API Security (2021)</li>
+                        <li>AI-Driven Software Quality Assurance: Systematic Literature Review (Under Review)</li>
+                        <li>A Novel Anomaly Detection Approach to Secure APIs from Cyberattacks (2022)</li>
                     </ul>
                 </div>
             </div>
 
             <div class="project-card fade-in">
                 <span class="project-number">03</span>
-                <p class="project-id">PathAI-Nav</p>
-                <h3 class="project-title">Multi-Agent Pathfinding & Scalable Navigation</h3>
+                <p class="project-id">AdaptHCI</p>
+                <h3 class="project-title">Adaptive Intelligent Interfaces & Context-Aware Interaction</h3>
                 <div class="project-tags">
-                    <span class="project-tag">A* Optimization</span>
-                    <span class="project-tag">Recast/Detour</span>
-                    <span class="project-tag">Parallel Computing</span>
-                    <span class="project-tag">Game AI</span>
-                </div>
-                <p class="project-description">
-                    Investigating scalable algorithms for pathfinding and spatial reasoning in dynamic environments. Current work explores multi-threaded A* pathfinding, real-time navigation mesh updates, and AI-assisted optimization for games, robotics, and simulation platforms.
-                </p>
-                <div class="project-publications">
-                    <h5>Related Submissions</h5>
-                    <ul>
-                        <li>Multi-threaded Recast-Based A* Pathfinding for Scalable Navigation</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="project-card fade-in">
-                <span class="project-number">04</span>
-                <p class="project-id">AI4-SE-Quality</p>
-                <h3 class="project-title">AI-Driven Software Engineering Quality & Reliability</h3>
-                <div class="project-tags">
-                    <span class="project-tag">AI-assisted Testing</span>
-                    <span class="project-tag">SQA Automation</span>
-                    <span class="project-tag">Industry Adoption</span>
-                </div>
-                <p class="project-description">
-                    Studying the role of AI in improving software quality assurance processes. Analyzing capabilities, limitations, and practical barriers to adoption. Building intelligent agents for automated test generation and defect prediction across the software engineering lifecycle.
-                </p>
-                <div class="project-publications">
-                    <h5>Related Submissions</h5>
-                    <ul>
-                        <li>AI-Driven Software Quality Assurance: Systematic Literature Review</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="project-card fade-in">
-                <span class="project-number">05</span>
-                <p class="project-id">Trust-SemanticAI</p>
-                <h3 class="project-title">Trusted Knowledge Systems & Semantic AI</h3>
-                <div class="project-tags">
-                    <span class="project-tag">Semantic Web</span>
-                    <span class="project-tag">Provenance</span>
-                    <span class="project-tag">Explainable AI</span>
-                </div>
-                <p class="project-description">
-                    Exploring how semantic technologies bring structure, trust, and explainability to AI-driven systems. Investigating provenance, trust scoring, and transparent reasoning in knowledge-driven applications for enterprise and public-sector use.
-                </p>
-                <div class="project-publications">
-                    <h5>Related Publications</h5>
-                    <ul>
-                        <li>TuckerDNCaching: Negative Sampling with Tucker Decomposition (2023)</li>
-                        <li>MDNCaching: Quality Negatives for KG Embedding (2022)</li>
-                        <li>Negative Sampling in KG Representation Learning: A Review (2024)</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="project-card fade-in">
-                <span class="project-number">06</span>
-                <p class="project-id">Cognitive-AI Systems</p>
-                <h3 class="project-title">Human-Centered AI & Cognitive Computing</h3>
-                <div class="project-tags">
-                    <span class="project-tag">HCI</span>
+                    <span class="project-tag">Adaptive HCI</span>
+                    <span class="project-tag">Contextual Tooltips</span>
                     <span class="project-tag">Metacognition</span>
-                    <span class="project-tag">User Behavior</span>
+                    <span class="project-tag">User Modeling</span>
                 </div>
                 <p class="project-description">
-                    Understanding how human cognition, age, and behavior influence interactions with AI-driven systems. Designing adaptive interfaces and personalized interaction models that improve usability, accessibility, and user satisfaction in intelligent applications.
+                    Investigating how intelligent systems can dynamically adapt their interface elements — tooltips, guidance overlays, and interaction patterns — based on user cognitive profiles, task context, and real-time behavior signals. Building on prior work in metacognition-aware design, this project develops adaptive UI frameworks that personalize information delivery to reduce cognitive load and improve accessibility across diverse user populations.
                 </p>
                 <div class="project-publications">
                     <h5>Related Publications</h5>
@@ -629,6 +941,188 @@
                 </div>
             </div>
 
+            <div class="project-card fade-in">
+                <span class="project-number">04</span>
+                <p class="project-id">BlockTrust-KP</p>
+                <h3 class="project-title">Blockchain-Anchored Knowledge Provenance & Decentralized Trust</h3>
+                <div class="project-tags">
+                    <span class="project-tag">Blockchain</span>
+                    <span class="project-tag">Knowledge Provenance</span>
+                    <span class="project-tag">Semantic Trust</span>
+                    <span class="project-tag">Digital Governance</span>
+                </div>
+                <p class="project-description">
+                    Converging blockchain-based trust infrastructure with semantic knowledge systems to create verifiable, tamper-proof provenance chains for AI-generated knowledge and digital assets. This direction combines decentralized governance frameworks with ontology-driven trust scoring, enabling transparent audit trails for DRM, public records, and AI reasoning outputs in enterprise and government contexts.
+                </p>
+                <div class="project-publications">
+                    <h5>Related Publications</h5>
+                    <ul>
+                        <li>SecureRights: Blockchain-Powered DRM Framework (2024)</li>
+                        <li>Blockchain for Vehicle Registration in Sri Lanka (2024)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <span class="project-number">05</span>
+                <p class="project-id">GreenSE-Carbon</p>
+                <h3 class="project-title">Sustainable Software Engineering & Carbon Footprint Analysis</h3>
+                <div class="project-tags">
+                    <span class="project-tag">Green Software</span>
+                    <span class="project-tag">Carbon Emissions</span>
+                    <span class="project-tag">Architecture Comparison</span>
+                    <span class="project-tag">Framework Benchmarking</span>
+                </div>
+                <p class="project-description">
+                    Measuring and comparing the environmental impact of software systems across architectural styles and technology stacks. This project evaluates energy consumption and carbon emissions across monolithic, microservices, and event-driven architectures in containerized and bare-metal deployments using hardware-level profiling (HWiNFO64) and standardized load testing (k6). A complementary benchmarking tool compares the carbon footprint of popular web frameworks across multiple programming language ecosystems under controlled conditions.
+                </p>
+                <div class="project-publications">
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="https://github.com/CogNet-Lab" target="_blank" style="color: inherit; text-decoration: none;">GitHub — CogNet-Lab/GreenArch-Carbon</a></li>
+                        <li><a href="https://github.com/CogNet-Lab" target="_blank" style="color: inherit; text-decoration: none;">GitHub — CogNet-Lab/CarbonFramework-Bench</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <span class="project-number">06</span>
+                <p class="project-id">DataBench-Lab</p>
+                <h3 class="project-title">Database & Datastore Performance Benchmarking</h3>
+                <div class="project-tags">
+                    <span class="project-tag">Vector Databases</span>
+                    <span class="project-tag">NoSQL Systems</span>
+                    <span class="project-tag">Benchmarking</span>
+                    <span class="project-tag">Reproducibility</span>
+                </div>
+                <p class="project-description">
+                    Developing research-grade, extensible benchmarking frameworks for evaluating database and datastore performance across multiple dimensions. Current work spans vector database evaluation for embedding-powered AI applications and comparative analysis of NoSQL systems (Cassandra, MongoDB, Redis) in distributed deployment modes — enabling fair, reproducible comparisons for both academic research and production system selection.
+                </p>
+                <div class="project-publications">
+                    <h5>Related Publications & Resources</h5>
+                    <ul>
+                        <li>Performance Comparison of NoSQL Databases in Pseudo Distributed Mode (2016)</li>
+                        <li><a href="https://github.com/CogNet-Lab" target="_blank" style="color: inherit; text-decoration: none;">GitHub — CogNet-Lab/VectorDB-Bench</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="publications-section" id="publications">
+        <div class="section-header fade-in">
+            <p class="section-label">Scholarly Output</p>
+            <h2 class="section-title">Publications</h2>
+        </div>
+        <div class="pub-filters fade-in">
+            <button class="pub-filter-btn active" data-year="all">All</button>
+            <button class="pub-filter-btn" data-year="2026">2026</button>
+            <button class="pub-filter-btn" data-year="2024">2024</button>
+            <button class="pub-filter-btn" data-year="2023">2023</button>
+            <button class="pub-filter-btn" data-year="2022">2022</button>
+            <button class="pub-filter-btn" data-year="2020">2020</button>
+            <button class="pub-filter-btn" data-year="2016">2016</button>
+            <button class="pub-filter-btn" data-year="2015">2015</button>
+        </div>
+        <div class="pub-table-wrap fade-in">
+            <table class="pub-table">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Title</th>
+                        <th>Authors</th>
+                        <th>Venue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-year="2026">
+                        <td class="col-year">2026</td>
+                        <td class="col-title"><a href="https://arxiv.org/abs/2602.04130" target="_blank">Multi-threaded Recast-Based A* Pathfinding for Scalable Navigation in Dynamic Game Environments</a></td>
+                        <td class="col-authors"><span class="self">T Madushanka</span>, S Madushanka</td>
+                        <td class="col-venue">arXiv preprint arXiv:2602.04130</td>
+                    </tr>
+                    <tr data-year="2024">
+                        <td class="col-year">2024</td>
+                        <td class="col-title"><a href="https://arxiv.org/pdf/2402.19195.pdf" target="_blank">Negative Sampling in Knowledge Graph Representation Learning: A Review</a></td>
+                        <td class="col-authors"><span class="self">T Madushanka</span>, R Ichise</td>
+                        <td class="col-venue">arXiv preprint</td>
+                    </tr>
+                    <tr data-year="2024">
+                        <td class="col-year">2024</td>
+                        <td class="col-title"><a href="https://arxiv.org/abs/2403.06094" target="_blank">SecureRights: A Blockchain-Powered Trusted DRM Framework for Robust Protection and Asserting Digital Rights</a></td>
+                        <td class="col-authors"><span class="self">T Madushanka</span>, DS Kumara, AA Rathnaweera</td>
+                        <td class="col-venue">arXiv preprint arXiv:2403.06094</td>
+                    </tr>
+                    <tr data-year="2024">
+                        <td class="col-year">2024</td>
+                        <td class="col-title"><a href="https://ieeexplore.ieee.org/document/10990093" target="_blank">Text-KG Distill: Textual Knowledge Distillation for Enhanced KG Embeddings</a></td>
+                        <td class="col-authors"><span class="self">T Madushanka</span>, R Ichise</td>
+                        <td class="col-venue">2024 International Conference on AI x Data and Knowledge Engineering (AIxDKE)</td>
+                    </tr>
+                    <tr data-year="2024">
+                        <td class="col-year">2024</td>
+                        <td class="col-title"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4877272" target="_blank">Blockchain for Vehicle Registration, Transferring and Management Process in Sri Lanka</a></td>
+                        <td class="col-authors">C Malintha, D Diyasena, <span class="self">T Madushanka</span></td>
+                        <td class="col-venue">SSRN</td>
+                    </tr>
+                    <tr data-year="2023">
+                        <td class="col-year">2023</td>
+                        <td class="col-title"><a href="https://link.springer.com/article/10.1007/s10844-023-00796-y" target="_blank">TuckerDNCaching: High-Quality Negative Sampling with Tucker Decomposition</a></td>
+                        <td class="col-authors"><span class="self">T Madushanka</span>, R Ichise</td>
+                        <td class="col-venue">Journal of Intelligent Information Systems, 61(3), 739–763</td>
+                    </tr>
+                    <tr data-year="2022">
+                        <td class="col-year">2022</td>
+                        <td class="col-title"><a href="https://doi.org/10.1007/978-3-031-08530-7_74" target="_blank">MDNCaching: A Strategy to Generate Quality Negatives for Knowledge Graph Embedding</a></td>
+                        <td class="col-authors"><span class="self">T Madushanka</span>, R Ichise</td>
+                        <td class="col-venue">International Conference on Industrial, Engineering and Other Applications of Applied Intelligent Systems</td>
+                    </tr>
+                    <tr data-year="2022">
+                        <td class="col-year">2022</td>
+                        <td class="col-title"><a href="https://ceur-ws.org/Vol-3125/paper9.pdf" target="_blank">A Novel Anomaly Detection Approach to Secure APIs from Cyberattacks</a></td>
+                        <td class="col-authors">A Ifthikar, N Thennakoon, S Malalgoda, HK Moraliyage, T Jayawickrama, <span class="self">T Madushanka</span>, et al.</td>
+                        <td class="col-venue">La Trobe University</td>
+                    </tr>
+                    <tr data-year="2020">
+                        <td class="col-year">2020</td>
+                        <td class="col-title"><a href="https://ieeexplore.ieee.org/document/9313016" target="_blank">Impact of Metacognition and Age Group on Contemporary Video Game Interface and Gameplay Design</a></td>
+                        <td class="col-authors">NN Harischandra, LA Jayakody, <span class="self">T Madusanka</span></td>
+                        <td class="col-venue">2020 International Research Conference on Smart Computing and Systems Engineering (SCSE)</td>
+                    </tr>
+                    <tr data-year="2020">
+                        <td class="col-year">2020</td>
+                        <td class="col-title"><a href="https://www.researchgate.net/publication/347442708_Building_Automation_System_to_Optimize_Energy_Utilization_Acquiring_the_Best_Performance_of_Appliances_in_a_Distributed_Network" target="_blank">Building Automation System to Optimize Energy Utilization Acquiring the Best Performance of Appliances in a Distributed Network</a></td>
+                        <td class="col-authors">I Ranaweera, <span class="self">T Madushanka</span>, C Ranaweera</td>
+                        <td class="col-venue">Proceedings of International Conference on Advances in Computing and Technology</td>
+                    </tr>
+                    <tr data-year="2016">
+                        <td class="col-year">2016</td>
+                        <td class="col-title"><a href="https://www.researchgate.net/publication/281629653_Performance_Comparison_of_NoSQL_Databases_in_Pseudo_Distributed_Mode_Cassandra_MongoDB_Redis" target="_blank">Performance Comparison of NoSQL Databases in Pseudo Distributed Mode: Cassandra, MongoDB & Redis</a></td>
+                        <td class="col-authors">C Kumarasinghe, D Liyanage, <span class="self">T Madushanka</span>, L Mendis</td>
+                        <td class="col-venue">Conference Proceedings</td>
+                    </tr>
+                    <tr data-year="2015">
+                        <td class="col-year">2015</td>
+                        <td class="col-title"><a href="https://zenodo.org/records/1100190" target="_blank">Customer Churn Prediction: A Cognitive Approach</a></td>
+                        <td class="col-authors">D Senanayake, L Muthugama, L Mendis, <span class="self">T Madushanka</span></td>
+                        <td class="col-venue">International Journal of Computer, Electrical, Automation, Control and Information Engineering</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pub-pagination fade-in">
+            <div class="pub-per-page">
+                <label for="perPageSelect">Show</label>
+                <select id="perPageSelect">
+                    <option value="10" selected>10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+            <div class="pub-page-info" id="pageInfo"></div>
+            <div class="pub-page-controls" id="pageControls"></div>
         </div>
     </section>
 
@@ -636,19 +1130,31 @@
         <div class="join-content fade-in">
             <h2>Join CogNet Lab</h2>
             <p>
-                We're always looking for motivated researchers, students, and collaborators who share our passion for 
-                intelligent systems, knowledge engineering, and human-centered AI. If you're interested in pursuing 
+                We're always looking for motivated researchers, students, and collaborators who share our passion for
+                intelligent systems, knowledge engineering, and human-centered AI. If you're interested in pursuing
                 research in any of our focus areas, we'd love to hear from you.
             </p>
-            <a href="mailto:tiroshanm@kln.ac.lk" class="contact-btn">Get in Touch</a>
+            <div class="join-actions">
+                <a href="/cdn-cgi/l/email-protection#7a0e13081509121b14173a111614541b19541611" class="contact-btn">Get in Touch</a>
+                <a href="https://github.com/CogNet-Lab" target="_blank" class="github-btn">
+                    <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                    Explore Our Code
+                </a>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>CogNet Lab • <a href="index.html">Dr. Tiroshan Madushanka</a> • University of Kelaniya</p>
+        <div class="footer-content">
+            <p>CogNet Lab • <a href="index.html">Dr. Tiroshan Madushanka</a> • University of Kelaniya</p>
+            <a href="https://github.com/CogNet-Lab" target="_blank" class="footer-github">
+                <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                CogNet-Lab
+            </a>
+        </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Scroll Progress Bar
         window.addEventListener('scroll', () => {
             const scrollProgress = document.getElementById('scrollProgress');
@@ -670,15 +1176,22 @@
 
         // Fade in animations on scroll
         const fadeElements = document.querySelectorAll('.fade-in');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+        
+        // Only hide elements if IntersectionObserver is supported
+        if ('IntersectionObserver' in window) {
+            fadeElements.forEach(el => el.classList.add('hidden'));
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('hidden');
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 
-        fadeElements.forEach(el => observer.observe(el));
+            fadeElements.forEach(el => observer.observe(el));
+        }
 
         // Smooth scroll for nav links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -690,6 +1203,91 @@
                 }
             });
         });
+
+        // Publications: Year Filter + Pagination
+        (function() {
+            const filterBtns = document.querySelectorAll('.pub-filter-btn');
+            const allRows = Array.from(document.querySelectorAll('.pub-table tbody tr'));
+            const perPageSelect = document.getElementById('perPageSelect');
+            const pageInfo = document.getElementById('pageInfo');
+            const pageControls = document.getElementById('pageControls');
+
+            let activeYear = 'all';
+            let perPage = 10;
+            let currentPage = 1;
+
+            function getFilteredRows() {
+                return allRows.filter(row =>
+                    activeYear === 'all' || row.getAttribute('data-year') === activeYear
+                );
+            }
+
+            function render() {
+                const filtered = getFilteredRows();
+                const totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
+                if (currentPage > totalPages) currentPage = totalPages;
+
+                const start = (currentPage - 1) * perPage;
+                const end = start + perPage;
+
+                // Hide all rows, then show the correct page slice
+                allRows.forEach(row => row.classList.add('hidden-row'));
+                filtered.forEach((row, i) => {
+                    if (i >= start && i < end) {
+                        row.classList.remove('hidden-row');
+                    }
+                });
+
+                // Page info
+                const showStart = filtered.length === 0 ? 0 : start + 1;
+                const showEnd = Math.min(end, filtered.length);
+                pageInfo.textContent = showStart + '–' + showEnd + ' of ' + filtered.length;
+
+                // Page buttons
+                let html = '';
+                html += '<button class="pub-page-btn nav-btn" data-action="prev"' + (currentPage <= 1 ? ' disabled' : '') + '>‹ Prev</button>';
+
+                for (let p = 1; p <= totalPages; p++) {
+                    html += '<button class="pub-page-btn' + (p === currentPage ? ' active' : '') + '" data-page="' + p + '">' + p + '</button>';
+                }
+
+                html += '<button class="pub-page-btn nav-btn" data-action="next"' + (currentPage >= totalPages ? ' disabled' : '') + '>Next ›</button>';
+                pageControls.innerHTML = html;
+
+                // Bind page button clicks
+                pageControls.querySelectorAll('.pub-page-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        if (btn.disabled) return;
+                        const action = btn.getAttribute('data-action');
+                        if (action === 'prev') currentPage--;
+                        else if (action === 'next') currentPage++;
+                        else currentPage = parseInt(btn.getAttribute('data-page'));
+                        render();
+                    });
+                });
+            }
+
+            // Year filter clicks
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    activeYear = btn.getAttribute('data-year');
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentPage = 1;
+                    render();
+                });
+            });
+
+            // Per page change
+            perPageSelect.addEventListener('change', () => {
+                perPage = parseInt(perPageSelect.value);
+                currentPage = 1;
+                render();
+            });
+
+            // Initial render
+            render();
+        })();
     </script>
 </body>
 </html>
